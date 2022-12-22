@@ -1,17 +1,15 @@
 package phase1ToPhase2;
-
-import java.util.Date;
 //Creating person super class
 public class Person {
     //Defining person class arguments
     private String name;
     private String surName;
     private String mobileNumber;
-    private Date dateOfBirth;
+    private String dateOfBirth;
     private String NIC;
-    
+
     //Creating person class constructor
-    public Person(String name, String surName, String mobileNumber, Date dateOfBirth, String NIC) {
+    public Person(String name, String surName, String mobileNumber, String dateOfBirth, String NIC) {
         this.name = name;
         this.surName = surName;
         this.mobileNumber = mobileNumber;
@@ -44,11 +42,11 @@ public class Person {
         this.mobileNumber = mobileNumber;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
