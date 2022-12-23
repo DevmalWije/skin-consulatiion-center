@@ -1,8 +1,10 @@
 package phase1ToPhase2;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Doctor extends Person {
+
     //Defining doctor class arguments
     private String specialization;
     private String medicalLicenseNumber;
@@ -13,6 +15,7 @@ public class Doctor extends Person {
         this.specialization = specialization;
         this.medicalLicenseNumber = medicalLicenseNumber;
     }
+
 
     //Creating getters and setters for doctor class arguments
 
