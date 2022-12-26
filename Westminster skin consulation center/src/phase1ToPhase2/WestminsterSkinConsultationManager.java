@@ -30,42 +30,20 @@ public class WestminsterSkinConsultationManager implements SkinConsultationManag
             String OptionChoice = sc.next();
             switch (OptionChoice){
                 case "1":
-
-//                    System.out.println("Enter First Name");
-//                    Fname=sc.next();
-//
-//                    System.out.println("Enter surname");
-//                    Sname=sc.next();
-//
-//                    System.out.println("Enter Mobile Number");
-//                    Mobile=sc.next();
-//
-//                    System.out.println("Enter Date of Birth");
-//                    DOB=sc.next();
-//
-//                    System.out.println("Enter NIC");
-//                    NIC=sc.next();
-//
-//                    System.out.println("Enter Specialization");
-//                    Specialization=sc.next();
-//
-//                    System.out.println("Enter License Number");
-//                    LicenseNumber=sc.next();
-
                     //Taking user input and validating it
-
+                    while (true) {
                         try {
                             System.out.println("Enter First Name");
                             Fname = sc.next();
-                            if (Fname.length() >= 3){
+                            if (Fname.length() >= 3) {
                                 break;
-                            }else {
+                            } else {
                                 System.out.println("First name should be more than 3 characters");
                             }
                         } catch (InputMismatchException e) {
                             System.out.println("Invalid Input");
-                            break;
                         }
+                    }
                         while (true) {
                             try {
                                 System.out.println("Enter Last Name");
@@ -77,7 +55,6 @@ public class WestminsterSkinConsultationManager implements SkinConsultationManag
                                 }
                             } catch (InputMismatchException e) {
                                 System.out.println("Invalid Input");
-                                break;
                             }
                         }
 
@@ -87,45 +64,68 @@ public class WestminsterSkinConsultationManager implements SkinConsultationManag
                             Mobile = sc.next();
                             if (Mobile.length() != 10) {
                                 throw new InputMismatchException();
+                            }else {
+                                break;
                             }
                         } catch (InputMismatchException e) {
                             System.out.println("Error: Invalid mobile number. Please enter a valid number with 10 digits.");
-                            break;
                         }
                     }
 
-                        System.out.println("Enter Date of Birth the format dd/MM/yyyy");
+                    while (true) {
                         try {
+                            System.out.println("Enter Date of Birth the format dd/MM/yyyy");
                             DOB = sc.next();
                             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                             sdf.setLenient(false);
                             Date date = sdf.parse(DOB);
+                            break;
                         } catch (ParseException e) {
                             System.out.println("Error: Invalid date of birth. Please enter a valid date in the format dd/MM/yyyy.");
                         }
+                    }
 
-                        System.out.println("Enter NIC");
+                    while (true) {
                         try {
+                            System.out.println("Enter NIC");
                             NIC = sc.next();
                             if (NIC.length() <= 11) {
                                 throw new InputMismatchException();
+                            } else {
+                                break;
                             }
                         } catch (InputMismatchException e) {
                             System.out.println("Error: Invalid NIC. Please enter a valid NIC with 13 digits.");
                         }
-
-                        System.out.println("Enter Specialization");
-                        Specialization = sc.next();
-
-                        System.out.println("Enter License Number");
+                    }
+                    while (true) {
                         try {
-                            LicenseNumber = sc.next();
-                            if (LicenseNumber.length() != 7) {
-                                throw new InputMismatchException();
+                            System.out.println("Enter Specialization");
+                            Specialization = sc.next();
+                            if (Specialization.length() >= 3) {
+                                break;
+                            } else {
+                                System.out.println("Specialization should be more than 3 characters");
                             }
                         } catch (InputMismatchException e) {
-                            System.out.println("Error: Invalid license number. Please enter a valid license number with 7 digits.");
+                            System.out.println("Invalid Input");
                         }
+                    }
+
+                       while (true) {
+                           try {
+                               System.out.println("Enter License Number");
+                               LicenseNumber = sc.next();
+                               if (LicenseNumber.length() != 7) {
+                                   throw new InputMismatchException();
+                               } else {
+                                   break;
+                               }
+                           } catch (InputMismatchException e) {
+                               System.out.println("Error: Invalid license number. Please enter a valid license number with 7 digits.");
+                           }
+                       }
+                       //Adding the doctor to the array list
                     doctorArray.add(new Doctor(Fname,Sname,Mobile,DOB,NIC,Specialization,LicenseNumber));
                     System.out.println(Fname+" "+Sname+" Doctor Added Added Successfully");
                     printDoctorList();
