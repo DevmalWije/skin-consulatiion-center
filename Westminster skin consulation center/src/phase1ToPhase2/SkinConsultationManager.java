@@ -11,6 +11,7 @@ public interface SkinConsultationManager {
     ArrayList<Doctor> getDoctorsBySpecialization(String specialization);
     void bookConsultation(Patient patient, Doctor doctor, Date date, String timeSlot, double cost, String notes);
     void cancelConsultation(Consultation consultation);
+
 }
 
 
