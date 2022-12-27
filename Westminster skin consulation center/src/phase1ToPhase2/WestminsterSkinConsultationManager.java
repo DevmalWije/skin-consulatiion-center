@@ -18,12 +18,14 @@ public class WestminsterSkinConsultationManager implements SkinConsultationManag
 
         Scanner sc=new Scanner(System.in);
         String Fname = null,Sname = null,Mobile = null,DOB = null,NIC = null,Specialization = null,LicenseNumber = null;
-        doctorArray.add(new Doctor("John", "Smith", "0777777777", "01/01/1990", "123456789V", "Dermatologist", "123456"));
-        doctorArray.add(new Doctor("Jane", "Doe", "0777777777", "01/01/1990", "123456789V", "Dermatologist", "123456"));
-        doctorArray.add(new Doctor("John", "Smith", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
-        doctorArray.add(new Doctor("Jane", "Doe", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
-        doctorArray.add(new Doctor("John", "Smith", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
-        doctorArray.add(new Doctor("John", "Smith", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
+
+        //CRUD for operations testing
+//        doctorArray.add(new Doctor("John", "Smith", "0777777777", "01/01/1990", "123456789V", "Dermatologist", "123456"));
+//        doctorArray.add(new Doctor("Jane", "Doe", "0777777777", "01/01/1990", "123456789V", "Dermatologist", "123456"));
+//        doctorArray.add(new Doctor("John", "Smith", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
+//        doctorArray.add(new Doctor("Jane", "Doe", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
+//        doctorArray.add(new Doctor("John", "Smith", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
+//        doctorArray.add(new Doctor("John", "Smith", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
 
         while (true){
             System.out.println("1. Add Doctor");
@@ -148,13 +150,13 @@ public class WestminsterSkinConsultationManager implements SkinConsultationManag
                     } else {
                         printDoctorList();
                         boolean doctorFound = false;
-                        System.out.println("Enter Doctor ID to remove");
+                        System.out.println("Enter License Number of Doctor to remove");
                         LicenseNumber = sc.next();
                         for (Doctor doctor : doctorArray) {
                             if (doctor.getMedicalLicenseNumber().equals(LicenseNumber)) {
                                 doctorArray.remove(doctor);
                                 System.out.println("Doctor Removed Successfully");
-                                System.out.println("Updated List of Available Doctors");
+                                System.out.println("-------------------------------------------------------- Updated List of Available Doctors ----------------------------------------------------");
                                 printDoctorList();
                                 doctorFound = true;
                                 break;
@@ -170,14 +172,17 @@ public class WestminsterSkinConsultationManager implements SkinConsultationManag
                     //Display Doctors
                     printSortedList();
                     break;
+
                 case "4":
                    //saving doctor list to text file
                     saveDoctorList();
                     break;
+
                 case "5":
                     //exit
                     System.exit(0);
                     break;
+
                 default:
                     System.out.println("Invalid choice");
             }

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f5bbf9a6-4e20-436e-944e-bd11eb1451f4" name="Changes" comment="">
+    <list default="true" id="f5bbf9a6-4e20-436e-944e-bd11eb1451f4" name="Changes" comment="validated all user inputs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase2/SkinConsultationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase2/SkinConsultationManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase2/WestminsterSkinConsultationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase2/WestminsterSkinConsultationManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase2/WestminsterSkinConsultationManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase2/WestminsterSkinConsultationManager.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,11 +42,34 @@
       <workItem from="1671771409581" duration="47000" />
       <workItem from="1671771479653" duration="10452000" />
       <workItem from="1671894288523" duration="7270000" />
-      <workItem from="1672108143591" duration="5032000" />
+      <workItem from="1672108143591" duration="7622000" />
     </task>
+    <task id="LOCAL-00001" summary="validated all user inputs">
+      <created>1672114317152</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1672114317152</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="validated all user inputs" />
+    <option name="LAST_COMMIT_MESSAGE" value="validated all user inputs" />
   </component>
 </project>
