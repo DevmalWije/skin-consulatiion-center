@@ -1,7 +1,4 @@
-package phase1ToPhase2;
-
-import java.util.ArrayList;
-import java.util.Date;
+package phase1ToPhase3;
 
 public class Doctor extends Person {
 

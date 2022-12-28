@@ -1,6 +1,4 @@
-package phase1ToPhase2;
-
-import java.util.Date;
+package phase1ToPhase3;
 
 public class Patient extends Person {
     private String patientID;

@@ -1,4 +1,4 @@
-package phase1ToPhase2;
+package phase1ToPhase3;
 
 public class Consultation {
     //Defining consultation class arguments

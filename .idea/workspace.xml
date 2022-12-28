@@ -2,14 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5bbf9a6-4e20-436e-944e-bd11eb1451f4" name="Changes" comment="validated all user inputs">
+      <change afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/CustomButton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backdrop.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase2/WestminsterSkinConsultationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase2/WestminsterSkinConsultationManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase2/WestminsterSkinConsultationManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase2/WestminsterSkinConsultationManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Doctors.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Doctors.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase2/Consultation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/Consultation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase2/Doctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/Doctor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase2/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/Patient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase2/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase2/SkinConsultationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/SkinConsultationManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase2/WestminsterSkinConsultationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/WestminsterSkinConsultationManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase2/Consultation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase2/Doctor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase2/Patient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase2/Person.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase2/SkinConsultationManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase2/WestminsterSkinConsultationManager.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -27,9 +48,22 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/IIT courswork/L-5-SE-2023/5COSC019C.1 Object Oriented Programming/CW/W1912859-skn-consulatiion-center/Westminster skin consulation center/src/phase1ToPhase3&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IIT courswork\L-5-SE-2023\5COSC019C.1 Object Oriented Programming\CW\W1912859-skn-consulatiion-center\Westminster skin consulation center\src\phase1ToPhase3" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\IIT courswork\L-5-SE-2023\5COSC019C.1 Object Oriented Programming\CW\W1912859-skn-consulatiion-center" />
+      <recent name="D:\IIT courswork\L-5-SE-2023\5COSC019C.1 Object Oriented Programming\CW\W1912859-skn-consulatiion-center\Westminster skin consulation center" />
+      <recent name="D:\IIT courswork\L-5-SE-2023\5COSC019C.1 Object Oriented Programming\CW\W1912859-skn-consulatiion-center\Westminster skin consulation center\src" />
+      <recent name="D:\IIT courswork\L-5-SE-2023\5COSC019C.1 Object Oriented Programming\CW\W1912859-skn-consulatiion-center\Westminster skin consulation center\src\phase1ToPhase3" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -42,7 +76,12 @@
       <workItem from="1671771409581" duration="47000" />
       <workItem from="1671771479653" duration="10452000" />
       <workItem from="1671894288523" duration="7270000" />
-      <workItem from="1672108143591" duration="7622000" />
+      <workItem from="1672108143591" duration="7949000" />
+      <workItem from="1672129360705" duration="2053000" />
+      <workItem from="1672141018091" duration="7516000" />
+      <workItem from="1672205129046" duration="1122000" />
+      <workItem from="1672208668985" duration="7558000" />
+      <workItem from="1672233999962" duration="5233000" />
     </task>
     <task id="LOCAL-00001" summary="validated all user inputs">
       <created>1672114317152</created>

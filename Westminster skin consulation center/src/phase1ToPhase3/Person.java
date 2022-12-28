@@ -1,4 +1,4 @@
-package phase1ToPhase2;
+package phase1ToPhase3;
 //Creating person super class
 public class Person {
     //Defining person class arguments
