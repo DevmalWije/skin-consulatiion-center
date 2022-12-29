@@ -2,6 +2,7 @@ package phase1ToPhase3;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class WestminsterSkinConsultationClinic_GUI {
     public static void main(String[] args) {
@@ -49,7 +50,20 @@ public class WestminsterSkinConsultationClinic_GUI {
         frame.add(background);
         frame.setVisible(true);
 
+//        bookedConsultationsButton.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                frame.dispose();
+//                JFrame bookedConsultationsFrame = new JFrame("Booked Consultations");
+//                bookedConsultationsFrame.setSize(750, 500);
+//                bookedConsultationsFrame.setLayout(null);
+//                bookedConsultationsFrame.setVisible(true);
+//                bookedConsultationsFrame.setLocationRelativeTo(null);
+//                bookedConsultationsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//            }
+//        });
 
-
+        
     }
 }
+
