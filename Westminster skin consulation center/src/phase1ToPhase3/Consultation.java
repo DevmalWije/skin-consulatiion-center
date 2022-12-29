@@ -1,6 +1,9 @@
 package phase1ToPhase3;
 
-public class Consultation {
+import java.io.Serializable;
+
+public class Consultation implements Serializable {
+    public static final long serialVersionUID = 1L;
     //Defining consultation class arguments
     private Doctor doctor;
     private Patient patient;
@@ -67,5 +70,15 @@ public class Consultation {
         this.consultationNotes = consultationNotes;
     }
 
-
+    @Override
+    public String toString() {
+        return "Consultation{" +
+                "doctor=" + doctor +
+                ", patient=" + patient +
+                ", date='" + date + '\'' +
+                ", timeSlot='" + timeSlot + '\'' +
+                ", consultationCost=" + consultationCost +
+                ", consultationNotes='" + consultationNotes + '\'' +
+                '}';
+    }
 }

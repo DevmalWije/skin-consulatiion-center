@@ -2,23 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5bbf9a6-4e20-436e-944e-bd11eb1451f4" name="Changes" comment="validated all user inputs">
-      <change afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/CustomButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backdrop.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DoctorsDetails.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/Consultation.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/CustomButton$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/CustomButton.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/Doctor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/Patient.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/Person.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/SkinConsultationManager.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Doctors.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Doctors.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase2/Consultation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/Consultation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase2/Doctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/Doctor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase2/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/Patient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase2/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase2/SkinConsultationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/SkinConsultationManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase2/WestminsterSkinConsultationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/WestminsterSkinConsultationManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase2/Consultation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase2/Doctor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase2/Patient.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase2/Person.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase2/SkinConsultationManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase2/WestminsterSkinConsultationManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/Consultation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/Consultation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/Doctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/Doctor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/WestminsterSkinConsultationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/WestminsterSkinConsultationManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +80,7 @@
       <workItem from="1672205129046" duration="1122000" />
       <workItem from="1672208668985" duration="7558000" />
       <workItem from="1672233999962" duration="5233000" />
+      <workItem from="1672291473665" duration="5643000" />
     </task>
     <task id="LOCAL-00001" summary="validated all user inputs">
       <created>1672114317152</created>

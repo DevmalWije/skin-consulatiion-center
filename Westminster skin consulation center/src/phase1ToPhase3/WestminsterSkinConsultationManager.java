@@ -1,8 +1,7 @@
 package phase1ToPhase3;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+
+import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,22 +13,25 @@ import java.util.Scanner;
 public class WestminsterSkinConsultationManager implements SkinConsultationManager {
 
     static ArrayList<Doctor> doctorArray = new ArrayList<Doctor>();
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
 
         Scanner sc=new Scanner(System.in);
         String Fname = null,Sname = null,Mobile = null,DOB = null,NIC = null,Specialization = null,LicenseNumber = null;
 
         //CRUD for operations testing
-        doctorArray.add(new Doctor("John", "Smith", "0777777777", "01/01/1990", "123456789V", "Dermatologist", "123456"));
-        doctorArray.add(new Doctor("Jane", "Doe", "0777777777", "01/01/1990", "123456789V", "Dermatologist", "123456"));
-        doctorArray.add(new Doctor("John", "Smith", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
-        doctorArray.add(new Doctor("Jane", "Doe", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
-        doctorArray.add(new Doctor("John", "Smith", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
-        doctorArray.add(new Doctor("John", "Smith", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
-        doctorArray.add(new Doctor("John", "Smith", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
-        doctorArray.add(new Doctor("Jane", "Doe", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
-        doctorArray.add(new Doctor("John", "Smith", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
-        doctorArray.add(new Doctor("John", "Smith", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
+//        doctorArray.add(new Doctor("John", "Smith", "0777777777", "01/01/1990", "123456789V", "Dermatologist", "123456"));
+//        doctorArray.add(new Doctor("Jane", "Doe", "0777777777", "01/01/1990", "123456789V", "Dermatologist", "123456"));
+//        doctorArray.add(new Doctor("John", "Smith", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
+//        doctorArray.add(new Doctor("Jane", "Doe", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
+//        doctorArray.add(new Doctor("John", "Smith", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
+//        doctorArray.add(new Doctor("John", "Smith", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
+//        doctorArray.add(new Doctor("John", "Smith", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
+//        doctorArray.add(new Doctor("Jane", "Doe", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
+//        doctorArray.add(new Doctor("John", "Smith", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
+//        doctorArray.add(new Doctor("John", "Smith", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
+
+        System.out.println("Welcome to Westminster Skin Consultation Center");
+        getSavedDoctorList();
 
         while (true) {
             System.out.println("1. Add Doctor");
@@ -179,7 +181,7 @@ public class WestminsterSkinConsultationManager implements SkinConsultationManag
                     if(doctorArray.size() == 0) {
                         System.out.println("No Doctors Available");
                     } else {
-                        printDoctorList();
+                        printSortedList();
                         break;
                     }
                     break;
@@ -229,26 +231,60 @@ public class WestminsterSkinConsultationManager implements SkinConsultationManag
         }
     }
     //saving doctor list to text file
-    private static void saveDoctorList() {
+    private static void saveDoctorList() throws IOException {
         if (doctorArray.size() == 0) {
             System.out.println("No Doctors Available");
         } else {
-            try {
-                FileWriter fileWriter = new FileWriter("Doctors.txt");
-                BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-                bufferedWriter.write("-------------------------------------------------------------- Available Doctors --------------------------------------------------------------");
-                bufferedWriter.newLine();
-                bufferedWriter.write("-----------------------------------------------------------------------------------------------------------------------------------------------");
-                bufferedWriter.newLine();
-                bufferedWriter.write(String.format("%-20s %-20s %-20s %-20s %-20s %-20s %-20s\n", "First Name", "Surname", "Mobile Number", "Date of Birth", "NIC", "Specialization", "License Number"));
-                for (Doctor doctor : doctorArray) {
-                    bufferedWriter.write(String.format("%-20s %-20s %-20s %-20s %-20s %-20s %-20s\n", doctor.getName(), doctor.getSurName(), doctor.getMobileNumber(), doctor.getDateOfBirth(), doctor.getNIC(), doctor.getSpecialization(), doctor.getMedicalLicenseNumber()));
+            File file = new File("DoctorsDetails.txt");
+            file.createNewFile();
+
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+            for (int i = 1; i <= doctorArray.size(); i++) {
+                objectOutputStream.writeObject(doctorArray.get(i - 1));
+            }
+
+            objectOutputStream.close();
+            fileOutputStream.close();
+
+            System.out.println("Doctors list saved successfully");
+        }
+
+    }
+
+    //getting saved doctor list from text file
+    private static void getSavedDoctorList() throws IOException, ClassNotFoundException {
+        while (true) {
+            File file = new File("DoctorsDetails.txt");
+            if (file.exists()) {
+                System.out.println("Do you wish to load the saved doctor list? (Y/N)");
+                System.out.print("Choice--->>> ");
+                Scanner loadOption = new Scanner(System.in);
+                String option = loadOption.next();
+                if (option.equals("Y") || option.equals("y")) {
+                    FileInputStream fileInputStream = new FileInputStream(file);
+                    ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+
+                    while (fileInputStream.available() > 0) {
+                        Doctor doctor = (Doctor) objectInputStream.readObject();
+                        doctorArray.add(doctor);
+                    }
+                    objectInputStream.close();
+                    fileInputStream.close();
+
+                    System.out.println("Doctors list loaded successfully\n");
+                    break;
+                } else if (option.equals("N") || option.equals("n")) {
+                    System.out.println("Doctor list not loaded");
+                    break;
+                } else {
+                    System.out.println("Invalid option");
                 }
-                    bufferedWriter.newLine();
-                bufferedWriter.close();
-                System.out.println("Doctors list saved successfully");
-            } catch (IOException e) {
-                System.out.println("Error: Unable to save doctors list");
+            } else {
+                System.out.println("No saved doctors list found");
+                break;
+
             }
         }
     }
