@@ -39,7 +39,7 @@ public class Consultation implements Serializable {
         this.patient = patient;
     }
 
-    public Date getDate() {
+    public Date getConsultationDate() {
         return date;
     }
 
@@ -47,7 +47,7 @@ public class Consultation implements Serializable {
         this.date = date;
     }
 
-    public String getTimeSlot() {
+    public String getConsultationTime() {
         return timeSlot;
     }
 
@@ -55,7 +55,7 @@ public class Consultation implements Serializable {
         this.timeSlot = timeSlot;
     }
 
-    public double getConsultationCost() {
+    public double getConsultationFee() {
         return consultationCost;
     }
 

@@ -13,6 +13,8 @@ import java.util.Scanner;
 public class WestminsterSkinConsultationManager implements SkinConsultationManager {
 
     static ArrayList<Doctor> doctorArray = new ArrayList<Doctor>();
+
+    static ArrayList<Consultation> consulationsArray = new ArrayList<Consultation>();
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
         Scanner sc=new Scanner(System.in);
@@ -29,6 +31,7 @@ public class WestminsterSkinConsultationManager implements SkinConsultationManag
 //        doctorArray.add(new Doctor("Jane", "Doe", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
 //        doctorArray.add(new Doctor("John", "Smith", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
 //        doctorArray.add(new Doctor("John", "Smith", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
+        consulationsArray.add(new Consultation(new Doctor("John", "Smith", "0777777777", "01/01/1990", "123456789V", "Dermatologist", "123456"),new Patient("John", "Smith", "0777777777", "01/01/1990", "123456789V","01029001"),new Date(),"12:00",100,"Notes"));
 
         System.out.println("Welcome to Westminster Skin Consultation Center");
         getSavedDoctorList();

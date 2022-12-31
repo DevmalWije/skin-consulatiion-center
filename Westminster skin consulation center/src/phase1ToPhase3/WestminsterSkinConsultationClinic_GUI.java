@@ -50,7 +50,7 @@ public class WestminsterSkinConsultationClinic_GUI {
             backButton1.setBounds(0, 0, 300, 50);
             backButton1.setFont(new Font("poppins", Font.PLAIN, 16));
 
-            backButton2.setBounds(0, 0, 300, 50);
+            backButton2.setBounds(0, 0, 734, 40);
             backButton2.setFont(new Font("poppins", Font.PLAIN, 16));
 
             backButton3.setBounds(0, 0, 300, 50);
@@ -88,13 +88,35 @@ public class WestminsterSkinConsultationClinic_GUI {
             doctorTable.setBackground(new Color(121, 152, 201));
             doctorTable.setForeground(Color.WHITE);
 
+
+            //creating combobox for doctor selection
+            JComboBox<String> doctorComboBox = new JComboBox<>();
+            doctorComboBox.setBounds(150, 50, 150, 30);
+
+            //adding doctors to combobox
+            for (Doctor doctor : WestminsterSkinConsultationManager.doctorArray) {
+                doctorComboBox.addItem(doctor.getMedicalLicenseNumber());
+            }
+
+
+            JLabel doctorLabel = new JLabel("Select doctor");
+            doctorLabel.setBounds(35, 40, 300, 50);
+            doctorLabel.setFont(new Font("poppins", Font.PLAIN, 16));
+
+            JLabel SelectedDoctorLabel = new JLabel("Selected doctor Name");
+            SelectedDoctorLabel.setBounds(335, 40, 300, 50);
+            SelectedDoctorLabel.setFont(new Font("poppins", Font.PLAIN, 16));
+
+
+
             //creating main panel
             JPanel mainPanel = new JPanel();
             mainPanel.setLayout(new BorderLayout());
 
             //creating sub panels
             JPanel consultationsPanel = new JPanel();
-            consultationsPanel.setLayout(new BorderLayout());
+            consultationsPanel.setLayout(null);
+            consultationsPanel.setPreferredSize(new Dimension(750, 500));
 
             JPanel doctorListPanel = new JPanel();
             doctorListPanel.setLayout(new BorderLayout());
@@ -102,7 +124,7 @@ public class WestminsterSkinConsultationClinic_GUI {
 
 
             JPanel bookedConsultationsPanel = new JPanel();
-            consultationsPanel.setLayout(new BorderLayout());
+            bookedConsultationsPanel.setLayout(new BorderLayout());
 
             //adding components to  "main" panel
             mainPanel.add(ConsultationButton);
@@ -112,16 +134,18 @@ public class WestminsterSkinConsultationClinic_GUI {
             mainPanel.add(HeaderLabel2);
             mainPanel.add(background);
 
-//            adding components to "doctorListPanel" panel
+            //adding components to "doctorListPanel" panel
             doctorListPanel.add(new JScrollPane(doctorTable), BorderLayout.CENTER);
             doctorListPanel.add(backButton1, BorderLayout.NORTH);
 
             //adding components to "consultationsPanel" panel
-            consultationsPanel.add(backButton2, BorderLayout.NORTH);
+            consultationsPanel.add(backButton2);
+            consultationsPanel.add(doctorLabel, BorderLayout.CENTER);
+            consultationsPanel.add(doctorComboBox);
+            consultationsPanel.add(SelectedDoctorLabel, BorderLayout.CENTER);
 
             //adding components to "bookedConsultationsPanel" panel
             bookedConsultationsPanel.add(backButton3, BorderLayout.NORTH);
-
 
 
 
@@ -184,8 +208,21 @@ public class WestminsterSkinConsultationClinic_GUI {
                 }
             };
 
+            //adding action listener to back buttons
             backButton1.addActionListener(backButtonListener);
             backButton2.addActionListener(backButtonListener);
             backButton3.addActionListener(backButtonListener);
+
+            doctorComboBox.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                            String selectedDoctor = (String) doctorComboBox.getSelectedItem();
+                            for (Doctor doctor : WestminsterSkinConsultationManager.doctorArray) {
+                                    if (doctor.getMedicalLicenseNumber().equals(selectedDoctor)) {
+                                            SelectedDoctorLabel.setText("Selected doctor: " + doctor.getName() + " " + doctor.getSurName());
+                                    }
+                            }
+                    }
+            });
     }
 }
