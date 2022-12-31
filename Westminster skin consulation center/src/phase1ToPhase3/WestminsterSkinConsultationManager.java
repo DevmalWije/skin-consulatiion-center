@@ -164,8 +164,7 @@ public class WestminsterSkinConsultationManager implements SkinConsultationManag
                         for (Doctor doctor : doctorArray) {
                             if (doctor.getMedicalLicenseNumber().equals(LicenseNumber)) {
                                 doctorArray.remove(doctor);
-                                System.out.println("Doctor Removed Successfully");
-                                System.out.println("-------------------------------------------------------- Updated List of Available Doctors ----------------------------------------------------");
+                                System.out.println("-------------------------------------------------------- Doctor Removed Successfully ----------------------------------------------------");
                                 printDoctorList();
                                 doctorFound = true;
                                 break;

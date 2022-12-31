@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5bbf9a6-4e20-436e-944e-bd11eb1451f4" name="Changes" comment="validated all user inputs">
+      <change afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/CustomCellRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DoctorsDetails.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DoctorsDetails.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/WestminsterSkinConsultationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/WestminsterSkinConsultationManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,6 +73,10 @@
       <workItem from="1672233999962" duration="5233000" />
       <workItem from="1672291473665" duration="5643000" />
       <workItem from="1672306872975" duration="374000" />
+      <workItem from="1672307553684" duration="1031000" />
+      <workItem from="1672316264565" duration="5336000" />
+      <workItem from="1672366392490" duration="9860000" />
+      <workItem from="1672460410687" duration="2440000" />
     </task>
     <task id="LOCAL-00001" summary="validated all user inputs">
       <created>1672114317152</created>
@@ -97,16 +105,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="validated all user inputs" />
     <option name="LAST_COMMIT_MESSAGE" value="validated all user inputs" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI.java</url>
-          <line>62</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
