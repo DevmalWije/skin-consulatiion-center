@@ -1,19 +1,20 @@
 package phase1ToPhase3;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Consultation implements Serializable {
     public static final long serialVersionUID = 1L;
     //Defining consultation class arguments
     private Doctor doctor;
     private Patient patient;
-    private String date;
+    private Date date;
     private String timeSlot;
     private double consultationCost;
     private String consultationNotes;
 
     //Creating consultation class constructor
-    public Consultation(Doctor doctor, Patient patient, String date, String timeSlot, double consultationCost, String consultationNotes) {
+    public Consultation(Doctor doctor, Patient patient, Date date, String timeSlot, double consultationCost, String consultationNotes) {
         this.doctor = doctor;
         this.patient = patient;
         this.date = date;
@@ -38,11 +39,11 @@ public class Consultation implements Serializable {
         this.patient = patient;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
