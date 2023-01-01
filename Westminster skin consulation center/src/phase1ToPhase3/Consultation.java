@@ -8,13 +8,13 @@ public class Consultation implements Serializable {
     //Defining consultation class arguments
     private Doctor doctor;
     private Patient patient;
-    private Date date;
+    private String date;
     private String timeSlot;
     private double consultationCost;
     private String consultationNotes;
 
     //Creating consultation class constructor
-    public Consultation(Doctor doctor, Patient patient, Date date, String timeSlot, double consultationCost, String consultationNotes) {
+    public Consultation(Doctor doctor, Patient patient, String date, String timeSlot, double consultationCost, String consultationNotes) {
         this.doctor = doctor;
         this.patient = patient;
         this.date = date;
@@ -39,11 +39,11 @@ public class Consultation implements Serializable {
         this.patient = patient;
     }
 
-    public Date getConsultationDate() {
+    public String getConsultationDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

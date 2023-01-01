@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f5bbf9a6-4e20-436e-944e-bd11eb1451f4" name="Changes" comment="validated all user inputs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/Consultation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/Consultation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/Patient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/WestminsterSkinConsultationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/WestminsterSkinConsultationManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$1.class" afterDir="false" />
@@ -10,6 +13,9 @@
       <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$8.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationManager.class" afterDir="false" />
     </list>
@@ -61,6 +67,26 @@
       <recent name="D:\IIT courswork\L-5-SE-2023\5COSC019C.1 Object Oriented Programming\CW\W1912859-skn-consulatiion-center\Westminster skin consulation center\src\phase1ToPhase3" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="WestminsterSkinConsultationManager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="phase1ToPhase3.WestminsterSkinConsultationManager" />
+      <module name="W1912859-skn-consulatiion-center" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="phase1ToPhase3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.WestminsterSkinConsultationManager" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -89,7 +115,7 @@
       <workItem from="1672493610117" duration="6796000" />
       <workItem from="1672511630850" duration="4159000" />
       <workItem from="1672555392367" duration="9456000" />
-      <workItem from="1672584884621" duration="2824000" />
+      <workItem from="1672584884621" duration="16197000" />
     </task>
     <task id="LOCAL-00001" summary="validated all user inputs">
       <created>1672114317152</created>

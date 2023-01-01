@@ -31,10 +31,13 @@ public class WestminsterSkinConsultationManager implements SkinConsultationManag
 //        doctorArray.add(new Doctor("Jane", "Doe", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
 //        doctorArray.add(new Doctor("John", "Smith", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
 //        doctorArray.add(new Doctor("John", "Smith", "dasddsad", "01/06/1990", "asdasd", "dadasd", "asd"));
-        consulationsArray.add(new Consultation(new Doctor("John", "Smith", "0777777777", "01/01/1990", "123456789V", "Dermatologist", "123456"),new Patient("John", "Smith", "0777777777", "01/01/1990", "123456789V","01029001"),new Date(),"12:00",100,"Notes"));
+//        consulationsArray.add(new Consultation(doctorArray.get(0),new Patient("John", "Smith", "0777777777", "01/01/1990", "123456789V","01029001"),new Date(),"12:00",100,"Notes"));
+
 
         System.out.println("Welcome to Westminster Skin Consultation Center");
         getSavedDoctorList();
+
+//        consulationsArray.add(new Consultation(doctorArray.get(0),new Patient("John", "Smith", "0777777777", "01/01/1990", "123456789V","01029001"),"02/01/2023","8:00",10,"Notes"));
 
         while (true) {
             System.out.println("1. Add Doctor");
