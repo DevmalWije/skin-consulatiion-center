@@ -1,12 +1,24 @@
 package phase1ToPhase3;
 
 //importing relevant libraries
+import org.jdatepicker.JDatePicker;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Properties;
+
+import org.jdatepicker.impl.DateComponentFormatter;
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
+
+
 
 public class WestminsterSkinConsultationClinic_GUI {
     public static void main(String[] args) {
@@ -98,33 +110,146 @@ public class WestminsterSkinConsultationClinic_GUI {
                 doctorComboBox.addItem(doctor.getMedicalLicenseNumber());
             }
 
+            //creating combobox for time slot selection
+            JComboBox<String> timeSlotComboBox = new JComboBox<>();
+            timeSlotComboBox.setBounds(380, 100, 70, 30);
+            for (int i = 8; i < 21; i++) {
+                timeSlotComboBox.addItem(i +":00");
+            }
 
-            JLabel doctorLabel = new JLabel("Select doctor");
-            doctorLabel.setBounds(35, 40, 300, 50);
+            //creating combobox for consultation duration
+            JComboBox<String> durationComboBox = new JComboBox<>();
+            durationComboBox.setBounds(560, 100, 100, 30);
+            durationComboBox.addItem("1/2 hour");
+            durationComboBox.addItem("1 hour");
+            durationComboBox.addItem("1 1/2 hours");
+            durationComboBox.addItem("2 hours");
+
+
+
+            //Creating Jlabels for consultation panel
+
+            JLabel doctorLabel = new JLabel("Select Doctor :");
+            doctorLabel.setBounds(25, 40, 300, 50);
             doctorLabel.setFont(new Font("poppins", Font.PLAIN, 16));
 
-            JLabel SelectedDoctorLabel = new JLabel("Selected doctor Name");
-            SelectedDoctorLabel.setBounds(335, 40, 300, 50);
+            JLabel SelectedDoctorLabel = new JLabel("Selected Doctor :");
+            SelectedDoctorLabel.setBounds(325, 40, 400, 50);
             SelectedDoctorLabel.setFont(new Font("poppins", Font.PLAIN, 16));
 
+            JLabel ConsultationDateLabel = new JLabel("Select Date :");
+            ConsultationDateLabel.setBounds(25, 90, 400, 50);
+            ConsultationDateLabel.setFont(new Font("poppins", Font.PLAIN, 16));
+
+            JLabel ConsultationTimeLabel = new JLabel("Time :");
+            ConsultationTimeLabel.setBounds(325, 90, 400, 50);
+            ConsultationTimeLabel.setFont(new Font("poppins", Font.PLAIN, 16));
+
+            JLabel ConsultationDurationLabel = new JLabel("Duration :");
+            ConsultationDurationLabel.setBounds(475, 90, 400, 50);
+            ConsultationDurationLabel.setFont(new Font("poppins", Font.PLAIN, 16));
+
+            JLabel patientNameLabel = new JLabel("Patient Name :");
+            patientNameLabel.setBounds(25, 140, 300, 50);
+            patientNameLabel.setFont(new Font("poppins", Font.PLAIN, 16));
+
+            JLabel patientSurnameLabel = new JLabel("Patient Surname :");
+            patientSurnameLabel.setBounds(325, 140, 300, 50);
+            patientSurnameLabel.setFont(new Font("poppins", Font.PLAIN, 16));
+
+            JLabel PatientDOBLabel = new JLabel("Patient DOB :");
+            PatientDOBLabel.setBounds(25, 190, 300, 50);
+            PatientDOBLabel.setFont(new Font("poppins", Font.PLAIN, 16));
+
+            JLabel PatientContactLabel = new JLabel("Patient Mobile No :");
+            PatientContactLabel.setBounds(325, 190, 300, 50);
+            PatientContactLabel.setFont(new Font("poppins", Font.PLAIN, 16));
+
+            JLabel PatientNICLabel = new JLabel("Patient NIC :");
+            PatientNICLabel.setBounds(25, 240, 300, 50);
+            PatientNICLabel.setFont(new Font("poppins", Font.PLAIN, 16));
+
+            JLabel patientNotesLabel = new JLabel("Patient Notes :");
+            patientNotesLabel.setBounds(25, 290, 300, 50);
+            patientNotesLabel.setFont(new Font("poppins", Font.PLAIN, 16));
 
 
             //creating main panel
             JPanel mainPanel = new JPanel();
             mainPanel.setLayout(new BorderLayout());
 
-            //creating sub panels
+            //----------creating sub panels----------//
+            //consultation panel
             JPanel consultationsPanel = new JPanel();
             consultationsPanel.setLayout(null);
             consultationsPanel.setPreferredSize(new Dimension(750, 500));
-
-            JPanel doctorListPanel = new JPanel();
+            //doctor list panel
+            JPanel  doctorListPanel = new JPanel ();
             doctorListPanel.setLayout(new BorderLayout());
             doctorListPanel.setPreferredSize(new Dimension(750, 500));
-
-
+            //booked consultations panel
             JPanel bookedConsultationsPanel = new JPanel();
             bookedConsultationsPanel.setLayout(new BorderLayout());
+
+            //creating JdatePicker component
+            UtilDateModel model = new UtilDateModel();
+            Properties p = new Properties();
+            p.put("text.today", "Today");
+            p.put("text.month", "Month");
+            p.put("text.year", "Year");
+            JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
+            JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateComponentFormatter());
+            datePicker.setBounds(150, 100, 150, 30);
+            datePicker.setFont(new Font("poppins", Font.PLAIN, 10));
+
+            UtilDateModel DOBModel = new UtilDateModel();
+            Properties Q = new Properties();
+            Q.put("text.today", "Today");
+            Q.put("text.month", "Month");
+            Q.put("text.year", "Year");
+            JDatePanelImpl DOBDatePanel = new JDatePanelImpl(DOBModel, Q);
+            JDatePickerImpl DOBDatePicker = new JDatePickerImpl(DOBDatePanel, new DateComponentFormatter());
+            DOBDatePicker.setBounds(150, 200, 150, 30);
+            DOBDatePicker.setFont(new Font("poppins", Font.PLAIN, 10));
+
+
+
+            //creating text fields
+            JTextField patientNameTextField = new JTextField();
+            patientNameTextField.setBounds(150, 150, 150, 30);
+            patientNameTextField.setFont(new Font("poppins", Font.PLAIN, 16));
+            patientNameTextField.setBorder(BorderFactory.createLineBorder(new Color(230, 238, 246)));
+
+            JTextField patientSurnameTextField = new JTextField();
+            patientSurnameTextField.setBounds(480, 150, 150, 30);
+            patientSurnameTextField.setFont(new Font("poppins", Font.PLAIN, 16));
+            patientSurnameTextField.setBorder(BorderFactory.createLineBorder(new Color(230, 238, 246 )));
+
+            JTextField patientContactTextField = new JTextField();
+            patientContactTextField.setBounds(480, 200, 150, 30);
+            patientContactTextField.setFont(new Font("poppins", Font.PLAIN, 16));
+            patientContactTextField.setBorder(BorderFactory.createLineBorder(new Color(230, 238, 246)));
+
+            JTextField patientNICTextField = new JTextField();
+            patientNICTextField.setBounds(150, 250, 150, 30);
+            patientNICTextField.setFont(new Font("poppins", Font.PLAIN, 16));
+            patientNICTextField.setBorder(BorderFactory.createLineBorder(new Color(230, 238, 246)));
+
+            JTextArea patientNotesTextArea = new JTextArea();
+            patientNotesTextArea.setBounds(150, 300, 480, 150);
+            patientNotesTextArea.setFont(new Font("poppins", Font.PLAIN, 16));
+            patientNotesTextArea.setLineWrap(true);
+            patientNotesTextArea.setWrapStyleWord(true);
+            patientNotesTextArea.setBorder(BorderFactory.createLineBorder(new Color(230, 238, 246)));
+
+            JTextArea selectedDoctorField = new JTextArea();
+            selectedDoctorField.setBounds(480, 50, 220, 30);
+            selectedDoctorField.setFont(new Font("poppins", Font.PLAIN, 16));
+            selectedDoctorField.setEditable(true);
+            selectedDoctorField.setFocusable(false);
+            selectedDoctorField.setLineWrap(true);
+            selectedDoctorField.setBorder(BorderFactory.createLineBorder(new Color(230, 238, 246)));
+
 
             //adding components to  "main" panel
             mainPanel.add(ConsultationButton);
@@ -140,13 +265,31 @@ public class WestminsterSkinConsultationClinic_GUI {
 
             //adding components to "consultationsPanel" panel
             consultationsPanel.add(backButton2);
-            consultationsPanel.add(doctorLabel, BorderLayout.CENTER);
+            consultationsPanel.add(doctorLabel);
             consultationsPanel.add(doctorComboBox);
-            consultationsPanel.add(SelectedDoctorLabel, BorderLayout.CENTER);
+            consultationsPanel.add(SelectedDoctorLabel);
+            consultationsPanel.add(ConsultationDateLabel);
+            consultationsPanel.add(datePicker);
+            consultationsPanel.add(ConsultationTimeLabel);
+            consultationsPanel.add(timeSlotComboBox);
+            consultationsPanel.add(ConsultationDurationLabel);
+            consultationsPanel.add(durationComboBox);
+            consultationsPanel.add(patientNameLabel);
+            consultationsPanel.add(patientNameTextField);
+            consultationsPanel.add(patientSurnameLabel);
+            consultationsPanel.add(patientSurnameTextField);
+            consultationsPanel.add(DOBDatePicker);
+            consultationsPanel.add(PatientDOBLabel);
+            consultationsPanel.add(PatientContactLabel);
+            consultationsPanel.add(patientContactTextField);
+            consultationsPanel.add(PatientNICLabel);
+            consultationsPanel.add(patientNICTextField);
+            consultationsPanel.add(patientNotesLabel);
+            consultationsPanel.add(patientNotesTextArea);
+            consultationsPanel.add(selectedDoctorField);
 
             //adding components to "bookedConsultationsPanel" panel
             bookedConsultationsPanel.add(backButton3, BorderLayout.NORTH);
-
 
 
             //Making container panel
@@ -166,6 +309,7 @@ public class WestminsterSkinConsultationClinic_GUI {
             frame.setLocationRelativeTo(null);
             frame.add(containerPanel);
             frame.setVisible(true);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
             //adding action listeners to buttons
@@ -213,14 +357,56 @@ public class WestminsterSkinConsultationClinic_GUI {
             backButton2.addActionListener(backButtonListener);
             backButton3.addActionListener(backButtonListener);
 
+            //adding action listener to doctor combobox
             doctorComboBox.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                             String selectedDoctor = (String) doctorComboBox.getSelectedItem();
                             for (Doctor doctor : WestminsterSkinConsultationManager.doctorArray) {
                                     if (doctor.getMedicalLicenseNumber().equals(selectedDoctor)) {
-                                            SelectedDoctorLabel.setText("Selected doctor: " + doctor.getName() + " " + doctor.getSurName());
+                                            selectedDoctorField.setText(doctor.getName() + " " + doctor.getSurName()+ " " + doctor.getSpecialization());
                                     }
+                            }
+                    }
+            });
+
+            //adding action listener to time slot combobox
+            timeSlotComboBox.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                            String selectedTimeSlot = (String) timeSlotComboBox.getSelectedItem();
+                    }
+            });
+
+            // Adding event listener to check whether the selected date is valid
+            datePicker.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                            Date selectedDate = (Date) datePicker.getModel().getValue();
+
+                            // Check if the selected date is before the present date
+                            if (selectedDate.before(new Date())) {
+                                    JOptionPane.showMessageDialog(null, "Please select a date in the future.", "Error", JOptionPane.ERROR_MESSAGE);
+                                    // Reset the date to the present date
+                                    Calendar calendar = Calendar.getInstance();
+                                    model.setDate(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE));
+                                    model.setSelected(true);
+                            }
+                    }
+            });
+
+            DOBDatePicker.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                            Date selectedDate = (Date) DOBDatePicker.getModel().getValue();
+
+                            // Check if the selected date is before the present date
+                            if (selectedDate.after(new Date())) {
+                                    JOptionPane.showMessageDialog(null, "Please select a date in the Past.", "Error", JOptionPane.ERROR_MESSAGE);
+                                    // Reset the date to the present date
+                                    Calendar calendar = Calendar.getInstance();
+                                    DOBModel.setDate(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE));
+                                    DOBModel.setSelected(true);
                             }
                     }
             });

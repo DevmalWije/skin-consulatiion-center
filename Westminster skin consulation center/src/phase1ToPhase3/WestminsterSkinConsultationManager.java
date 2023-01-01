@@ -260,34 +260,20 @@ public class WestminsterSkinConsultationManager implements SkinConsultationManag
         while (true) {
             File file = new File("DoctorsDetails.txt");
             if (file.exists()) {
-                System.out.println("Do you wish to load the saved doctor list? (Y/N)");
-                System.out.print("Choice--->>> ");
-                Scanner loadOption = new Scanner(System.in);
-                String option = loadOption.next();
-                if (option.equals("Y") || option.equals("y")) {
                     FileInputStream fileInputStream = new FileInputStream(file);
                     ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-
                     while (fileInputStream.available() > 0) {
                         Doctor doctor = (Doctor) objectInputStream.readObject();
                         doctorArray.add(doctor);
                     }
                     objectInputStream.close();
                     fileInputStream.close();
-
                     System.out.println("Doctors list loaded successfully\n");
-                    break;
-                } else if (option.equals("N") || option.equals("n")) {
-                    System.out.println("Doctor list not loaded");
-                    break;
-                } else {
-                    System.out.println("Invalid option");
-                }
             } else {
                 System.out.println("No saved doctors list found");
-                break;
 
             }
+            break;
         }
     }
 
