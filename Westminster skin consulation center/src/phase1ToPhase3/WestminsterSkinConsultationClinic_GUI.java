@@ -4,21 +4,25 @@ package phase1ToPhase3;
 import org.jdatepicker.JDatePicker;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Properties;
+import java.util.*;
+import java.util.List;
 
 import org.jdatepicker.impl.DateComponentFormatter;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
+import static phase1ToPhase3.WestminsterSkinConsultationManager.doctorArray;
 
 
 public class WestminsterSkinConsultationClinic_GUI {
@@ -49,7 +53,12 @@ public class WestminsterSkinConsultationClinic_GUI {
                 JButton backButton1 = new JButton("< Back");
                 JButton backButton2 = new JButton("< Back");
                 JButton backButton3 = new JButton("< Back");
+                JButton backButton4 = new JButton("< Back");
                 JButton bookButton = new JButton("Book consultation");
+                JButton doctorSortButton = new JButton("Sort Doctor by Name");
+                JButton imageUploadButton = new JButton("\uD83D\uDCC4");
+                JButton checkConsultationButton = new JButton("Check Your Consultation");
+
 
                 //setting button bounds
                 ConsultationButton.setBounds(410, 180, 300, 50);
@@ -64,16 +73,28 @@ public class WestminsterSkinConsultationClinic_GUI {
                 backButton1.setBounds(0, 0, 300, 50);
                 backButton1.setFont(new Font("poppins", Font.PLAIN, 16));
 
+                backButton2.setBounds(0, 0, 300, 50);
+                backButton2.setFont(new Font("poppins", Font.PLAIN, 16));
+
                 backButton2.setBounds(0, 0, 734, 40);
                 backButton2.setFont(new Font("poppins", Font.PLAIN, 16));
 
                 backButton3.setBounds(0, 0, 300, 50);
                 backButton3.setFont(new Font("poppins", Font.PLAIN, 16));
 
+                backButton4.setBounds(0, 0, 300, 50);
+                backButton4.setFont(new Font("poppins", Font.PLAIN, 16));
+
                 bookButton.setBounds(280, 395, 200, 40);
                 bookButton.setFont(new Font("poppins", Font.PLAIN, 16));
 
+                doctorSortButton.setBounds(0, 0, 300, 50);
+                doctorSortButton.setFont(new Font("poppins", Font.PLAIN, 16));
 
+                imageUploadButton.setBounds(480,250,150,35);
+
+                checkConsultationButton.setBounds(0, 0, 300, 50);
+                checkConsultationButton.setFont(new Font("poppins", Font.PLAIN, 16));
                 //creating doctor table model
                 DefaultTableModel doctorTableModel = new DefaultTableModel();
 
@@ -87,8 +108,16 @@ public class WestminsterSkinConsultationClinic_GUI {
                 doctorTableModel.addColumn("License #");
 
                 //adding rows to doctor table
-                for (Doctor doctor : WestminsterSkinConsultationManager.doctorArray) {
-                        doctorTableModel.addRow(new Object[]{doctor.getName(), doctor.getSurName(), doctor.getMobileNumber(), doctor.getDateOfBirth(), doctor.getNIC(), doctor.getSpecialization(), doctor.getMedicalLicenseNumber()});
+                for (Doctor doctor : doctorArray) {
+                        String name = doctor.getName();
+                        String surname = doctor.getSurName();
+                        String mobileNumber = doctor.getMobileNumber();
+                        String dateOfBirth = doctor.getDateOfBirth();
+                        String NIC = doctor.getNIC();
+                        String specialization = doctor.getSpecialization();
+                        String licenseNumber = doctor.getMedicalLicenseNumber();
+                                doctorTableModel.addRow(new Object[]{name, surname, mobileNumber, dateOfBirth, NIC, specialization, licenseNumber});
+//                        doctorTableModel.addRow(new Object[]{doctor.getName(), doctor.getSurName(), doctor.getMobileNumber(), doctor.getDateOfBirth(), doctor.getNIC(), doctor.getSpecialization(), doctor.getLicenseNumber()});
                 }
 
                 //creating doctor table
@@ -97,14 +126,51 @@ public class WestminsterSkinConsultationClinic_GUI {
                 doctorTable.setRowHeight(45);
                 doctorTable.setEnabled(false);
                 doctorTable.setFont(new Font("poppins", Font.PLAIN, 13));
+                doctorTable.setBackground(new Color(121, 152, 201));
+                doctorTable.setForeground(Color.WHITE);
 
                 JTableHeader doctorTableHeader = doctorTable.getTableHeader();
                 doctorTableHeader.setFont(new Font("poppins", Font.BOLD, 13));
                 doctorTableHeader.setBackground(new Color(0x123456));
                 doctorTableHeader.setForeground(Color.WHITE);
 
-                doctorTable.setBackground(new Color(121, 152, 201));
-                doctorTable.setForeground(Color.WHITE);
+
+                //Creating consultations table model
+                JTable consultationTable = new JTable();
+                consultationTable.setBounds(0, 0, 750, 500);
+                consultationTable.setRowHeight(45);
+                consultationTable.setEnabled(false);
+                consultationTable.setFont(new Font("poppins", Font.PLAIN, 13));
+                consultationTable.setBackground(new Color(121, 152, 201));
+                consultationTable.setForeground(Color.WHITE);
+
+                JTableHeader consultationTableHeader = consultationTable.getTableHeader();
+                consultationTableHeader.setFont(new Font("poppins", Font.BOLD, 13));
+                consultationTableHeader.setBackground(new Color(0x123456));
+                consultationTableHeader.setForeground(Color.WHITE);
+
+                //adding columns to consultation table
+                consultationTable.setModel(new DefaultTableModel(
+                        new Object[][]{
+                        },
+                        new String[]{
+                                "Doctor Name", "Specialization", "Patient Name", "Patient ID", "Consult Date", "Consult Time","Consult cost","Consult ID"
+                        }
+                ));
+
+                //adding rows to consultation table
+                for (Consultation consultation : WestminsterSkinConsultationManager.consulationsArray) {
+                        ((DefaultTableModel) consultationTable.getModel()).addRow(new Object[]{consultation.getDoctor().getName()+" "+consultation.getDoctor().getSurName(),
+                                consultation.getDoctor().getSpecialization(), consultation.getPatient().getName()+" "+consultation.getPatient().getSurName(),consultation.getPatient().getPatientID(),
+                                consultation.getConsultationDate(), consultation.getConsultationTime(),"£ "+consultation.getConsultationFee(),consultation.getConsultationID()});
+                }
+
+                // Create a new table to show more details about the clicked row
+                JTable detailsTable = new JTable();
+                DefaultTableModel detailsModel = new DefaultTableModel();
+                detailsModel.addColumn("Attribute");
+                detailsModel.addColumn("Value");
+                detailsTable.setModel(detailsModel);
 
 
                 //creating combobox for doctor selection
@@ -113,7 +179,7 @@ public class WestminsterSkinConsultationClinic_GUI {
 
 
                 //adding doctors to combobox
-                for (Doctor doctor : WestminsterSkinConsultationManager.doctorArray) {
+                for (Doctor doctor : doctorArray) {
                         doctorComboBox.addItem(doctor.getMedicalLicenseNumber());
                 }
                 doctorComboBox.setSelectedIndex(-1);
@@ -128,8 +194,9 @@ public class WestminsterSkinConsultationClinic_GUI {
 
                 //creating combobox for consultation duration
                 JComboBox<String> durationComboBox = new JComboBox<>();
-                durationComboBox.setBounds(600, 100, 100, 30);
+                durationComboBox.setBounds(560, 100, 100, 30);
                 durationComboBox.addItem("30 minutes");
+                durationComboBox.addItem("1 hour");
                 durationComboBox.addItem("1 hour 30");
                 durationComboBox.addItem("2 hours");
 
@@ -152,7 +219,7 @@ public class WestminsterSkinConsultationClinic_GUI {
                 ConsultationTimeLabel.setBounds(325, 90, 400, 50);
                 ConsultationTimeLabel.setFont(new Font("poppins", Font.PLAIN, 16));
 
-                JLabel ConsultationDurationLabel = new JLabel("Duration in hrs :");
+                JLabel ConsultationDurationLabel = new JLabel("Duration :");
                 ConsultationDurationLabel.setBounds(475, 90, 400, 50);
                 ConsultationDurationLabel.setFont(new Font("poppins", Font.PLAIN, 16));
 
@@ -180,6 +247,10 @@ public class WestminsterSkinConsultationClinic_GUI {
                 patientNotesLabel.setBounds(25, 290, 300, 50);
                 patientNotesLabel.setFont(new Font("poppins", Font.PLAIN, 16));
 
+                JLabel imageUploadLabel = new JLabel("Upload Image :");
+                imageUploadLabel.setBounds(325,240,300,50);
+                imageUploadLabel.setFont(new Font("poppins", Font.PLAIN, 16));
+
 
                 //creating main panel
                 JPanel mainPanel = new JPanel();
@@ -197,6 +268,10 @@ public class WestminsterSkinConsultationClinic_GUI {
                 //booked consultations panel
                 JPanel bookedConsultationsPanel = new JPanel();
                 bookedConsultationsPanel.setLayout(new BorderLayout());
+                //panel to check users consultations
+                JPanel checkConsultationPanel = new JPanel();
+                checkConsultationPanel.setLayout(new BorderLayout());
+                checkConsultationPanel.setPreferredSize(new Dimension(750, 500));
 
                 //creating JdatePicker component
                 UtilDateModel model = new UtilDateModel();
@@ -265,9 +340,11 @@ public class WestminsterSkinConsultationClinic_GUI {
                 mainPanel.add(HeaderLabel2);
                 mainPanel.add(background);
 
+                JScrollPane doctorScrollPane = new JScrollPane(doctorTable);
                 //adding components to "doctorListPanel" panel
-                doctorListPanel.add(new JScrollPane(doctorTable), BorderLayout.CENTER);
+                doctorListPanel.add(doctorScrollPane, BorderLayout.CENTER);
                 doctorListPanel.add(backButton1, BorderLayout.NORTH);
+                doctorListPanel.add(doctorSortButton, BorderLayout.SOUTH);
 
                 //adding components to "consultationsPanel" panel
                 consultationsPanel.add(backButton2);
@@ -290,6 +367,8 @@ public class WestminsterSkinConsultationClinic_GUI {
                 consultationsPanel.add(patientContactTextField);
                 consultationsPanel.add(PatientNICLabel);
                 consultationsPanel.add(patientNICTextField);
+                consultationsPanel.add(imageUploadLabel);
+                consultationsPanel.add(imageUploadButton);
                 consultationsPanel.add(patientNotesLabel);
                 consultationsPanel.add(patientNotesTextArea);
                 consultationsPanel.add(selectedDoctorField);
@@ -297,6 +376,11 @@ public class WestminsterSkinConsultationClinic_GUI {
 
                 //adding components to "bookedConsultationsPanel" panel
                 bookedConsultationsPanel.add(backButton3, BorderLayout.NORTH);
+                bookedConsultationsPanel.add(new JScrollPane(consultationTable), BorderLayout.CENTER);
+                bookedConsultationsPanel.add(checkConsultationButton, BorderLayout.SOUTH);
+
+                checkConsultationPanel.add(backButton4, BorderLayout.NORTH);
+                checkConsultationPanel.add(new JScrollPane(detailsTable), BorderLayout.CENTER);
 
 
                 //Making container panel
@@ -308,6 +392,12 @@ public class WestminsterSkinConsultationClinic_GUI {
                 containerPanel.add(consultationsPanel, "Consultations Panel");
                 containerPanel.add(doctorListPanel, "Doctor List Panel");
                 containerPanel.add(bookedConsultationsPanel, "Booked Consultations Panel");
+                containerPanel.add(checkConsultationPanel, "Check Consultation Panel");
+
+                //Creating consultation edit panels and relevant components
+                JPanel consultationEditPanel = new JPanel();
+
+                JLabel NICLabel = new JLabel("Enter NIC");
 
                 //creating frame
                 JFrame frame = new JFrame("Westminster Skin Consultation Clinic");
@@ -356,20 +446,41 @@ public class WestminsterSkinConsultationClinic_GUI {
                                 consultationsPanel.setVisible(false);
                                 doctorListPanel.setVisible(false);
                                 bookedConsultationsPanel.setVisible(false);
+                                checkConsultationPanel.setVisible(false);
+                                detailsModel.setRowCount(0);
                         }
                 };
+
+                doctorSortButton.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                               //sorting doctor table by first coloumn (name)
+                                TableRowSorter<TableModel> sorter = new TableRowSorter<>(doctorTable.getModel());
+                                doctorTable.setRowSorter(sorter);
+                                List<RowSorter.SortKey> sortKeys = new ArrayList<>();
+                                sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));
+                                sorter.setSortKeys(sortKeys);
+                                sorter.sort();
+
+                        }
+                });
+
+
 
                 //adding action listener to back buttons
                 backButton1.addActionListener(backButtonListener);
                 backButton2.addActionListener(backButtonListener);
                 backButton3.addActionListener(backButtonListener);
+                backButton4.addActionListener(backButtonListener);
+
+
 
                 //adding action listener to doctor combobox
                 doctorComboBox.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                                 String selectedDoctor = (String) doctorComboBox.getSelectedItem();
-                                for (Doctor doctor : WestminsterSkinConsultationManager.doctorArray) {
+                                for (Doctor doctor : doctorArray) {
                                         if (doctor.getMedicalLicenseNumber().equals(selectedDoctor)) {
                                                 selectedDoctorField.setText(doctor.getName() + " " + doctor.getSurName() + " (" + doctor.getSpecialization() + ")");
                                         }
@@ -414,80 +525,134 @@ public class WestminsterSkinConsultationClinic_GUI {
                 bookButton.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                                // Get the selected doctor
-                                String selectedDoctor = (String) doctorComboBox.getSelectedItem();
-                                Doctor doctor = null;
-                                for (Doctor doctor1 : WestminsterSkinConsultationManager.doctorArray) {
-                                        if (doctor1.getMedicalLicenseNumber().equals(selectedDoctor)) {
-                                                doctor = doctor1;
+                                if (datePicker.getJFormattedTextField().getText().equals("") || DOBDatePicker.getJFormattedTextField().getText().equals("")) {
+                                        JOptionPane.showMessageDialog(null, "Please fill all the fields.", "Error", JOptionPane.ERROR_MESSAGE);
+                                } else {
+
+                                        // Get the selected doctor
+                                        String selectedDoctor = (String) doctorComboBox.getSelectedItem();
+                                        Doctor doctor = null;
+                                        for (Doctor doctor1 : doctorArray) {
+                                                if (doctor1.getMedicalLicenseNumber().equals(selectedDoctor)) {
+                                                        doctor = doctor1;
+                                                }
                                         }
-                                }
-                                // Get the selected date
-                                Date selectedDate = (Date) datePicker.getModel().getValue();
-                                String selectedDateString = new SimpleDateFormat("dd/MM/yyyy").format(selectedDate);
-                                // Get the selected time slot
-                                String selectedTimeSlot = (String) timeSlotComboBox.getSelectedItem();
-                                // Get the selected duration
-                                String selectedDuration = (String) durationComboBox.getSelectedItem();
-                                double duration = 0;
-                                assert selectedDuration != null;
-                                switch (selectedDuration) {
-                                        case "30 minutes" -> duration = 0.5;
-                                        case "1 hour" -> duration = 1;
-                                        case "1 hour 30" -> duration = 1.5;
-                                        case "2 hours" -> duration = 2;
-                                }
+                                        // Get the selected date
+                                        Date selectedDate = (Date) datePicker.getModel().getValue();
+                                        String selectedDateString = new SimpleDateFormat("dd/MM/yyyy").format(selectedDate);
 
-                                double consultPrice=duration*25;
+                                        // Get the selected time slot
+                                        String selectedTimeSlot = (String) timeSlotComboBox.getSelectedItem();
+                                        // Get the selected duration
+                                        String selectedDuration = (String) durationComboBox.getSelectedItem();
 
 
+                                        // Get the patient name
+                                        String patientName = patientNameTextField.getText();
 
-                                // Get the patient name
-                                String patientName = patientNameTextField.getText();
+                                        // Get the patient surname
+                                        String patientSurname = patientSurnameTextField.getText();
+                                        // Get the patient date of birth
+                                        Date patientDOB = (Date) DOBDatePicker.getModel().getValue();
+                                        String patientDOBString = new SimpleDateFormat("dd/MM/yyyy").format(patientDOB);
 
-                                // Get the patient surname
-                                String patientSurname = patientSurnameTextField.getText();
-                                // Get the patient date of birth
-                                Date patientDOB = (Date) DOBDatePicker.getModel().getValue();
-                                String patientDOBString = new SimpleDateFormat("dd/MM/yyyy").format(patientDOB);
+                                        // Get the patient contact number
+                                        String patientContact = patientContactTextField.getText();
 
-                                // Get the patient contact number
-                                String patientContact = patientContactTextField.getText();
-                                System.out.println(patientContact);
 
-                                // Get the patient NIC
-                                String patientNIC = patientNICTextField.getText();
-                                System.out.println(patientNIC);
+                                        // Get the patient NIC
+                                        String patientNIC = patientNICTextField.getText();
 
-                                // Get the patient notes
-                                String patientNotes = patientNotesTextArea.getText();
 
-                                while (true){
-                                        if(selectedDoctor==null|| selectedDate==null||patientDOB==null||selectedTimeSlot==null||patientName.isEmpty()||patientSurname.isEmpty()||patientContact.isEmpty()||patientNIC.isEmpty()||patientNotes.isEmpty()){
-                                                JOptionPane.showMessageDialog(null, "Please fill all the fields", "Error", JOptionPane.ERROR_MESSAGE);
-                                                break;
+                                        // Get the patient notes
+                                        String patientNotes = patientNotesTextArea.getText();
+
+                                        double duration = 0;
+                                        assert selectedDuration != null;
+                                        switch (selectedDuration) {
+                                                case "30 minutes" -> duration = 0.5;
+                                                case "1 hour" -> duration = 1;
+                                                case "1 hour 30" -> duration = 1.5;
+                                                case "2 hours" -> duration = 2;
                                         }
-                                        else{
-                                                try{
-                                                        if (patientContact.isEmpty()  || patientNIC.isEmpty() ) {
-                                                                JOptionPane.showMessageDialog(null, "Please enter a valid contact number and NIC number.", "Error", JOptionPane.ERROR_MESSAGE);
-                                                                break;
-                                                        }
-                                                        else {
-                                                                for (Doctor doctor1 : WestminsterSkinConsultationManager.doctorArray) {
-                                                                        if (doctor1.getMedicalLicenseNumber().equals(selectedDoctor)) {
-                                                                                doctor = doctor1;
-                                                                                for (Consultation consultation : WestminsterSkinConsultationManager.consulationsArray) {
-                                                                                        if (consultation.getConsultationDate().equals(selectedDateString) && consultation.getConsultationTime().equals(selectedTimeSlot)) {
-                                                                                                JOptionPane.showMessageDialog(null, "The selected doctor is not available at the selected time slot.", "Error", JOptionPane.ERROR_MESSAGE);
-                                                                                                return;
-                                                                                        }else {
-                                                                                                if (WestminsterSkinConsultationManager.consulationsArray.size() <= 20) {
+                                        String consultationID = null;
+                                        consultationID = "C"+String.format("%08d", new Random().nextInt(1000));
+
+                                        double consultPrice = 0.0;
+                                        String patientID = null;
+                                        boolean isPatientExist = false;
+                                        for (Consultation consultation : WestminsterSkinConsultationManager.consulationsArray) {
+                                                String checkPatientNIC = consultation.getPatient().getNIC();
+                                                if (!Objects.equals(patientNIC, checkPatientNIC)) {
+                                                        // Generate patient ID and set consultPrice
+                                                        //Generating patient Id
+                                                        patientID = String.format("%08d", new Random().nextInt(100000000));
+                                                        consultPrice = duration * 15;
+                                                } else {
+                                                        // Set consultPrice
+                                                        patientID = String.valueOf(consultation.getPatient().getPatientID());
+                                                        consultPrice = duration * 25;
+                                                }
+                                        }
+
+                                        // Checking for empty fields
+                                        while (true) {
+                                                if (selectedDoctor == null || selectedDate == null || patientDOB == null || selectedTimeSlot == null || patientName.isEmpty() || patientSurname.isEmpty() || patientContact.isEmpty() || patientNIC.isEmpty() || patientNotes.isEmpty()) {
+                                                        JOptionPane.showMessageDialog(null, "Please fill all the fields", "Error", JOptionPane.ERROR_MESSAGE);
+                                                        break;
+                                                } else {
+                                                        try {
+                                                                if (patientContact.length() < 10 || patientNIC.length() < 12) {
+                                                                        JOptionPane.showMessageDialog(null, "Please enter a valid contact number and NIC number.", "Error", JOptionPane.ERROR_MESSAGE);
+                                                                        break;
+                                                                } else {
+                                                                        //Checking for duplicate consultation date and time, then assigning the consultation
+                                                                        for (Doctor doctor1 : doctorArray) {
+
+                                                                                if (doctor1.getMedicalLicenseNumber().equals(selectedDoctor)) {
+
+                                                                                        doctor = doctor1;
+
+                                                                                        for (Consultation consultation : WestminsterSkinConsultationManager.consulationsArray) {
+                                                                                                // Checking for duplicate consultation date and time
+                                                                                                if (consultation.getDoctor().getMedicalLicenseNumber().equals(selectedDoctor) && consultation.getConsultationDate().equals(selectedDateString) && consultation.getConsultationTime().equals(selectedTimeSlot)) {
+                                                                                                        JOptionPane.showMessageDialog(null, "The selected doctor is not available at the selected time slot, Assigning another doctor", "Warning", JOptionPane.ERROR_MESSAGE);
+
+                                                                                                        //checking for other available doctors
+                                                                                                        ArrayList<Doctor> availableDoctors = new ArrayList<>();
+                                                                                                        for (Doctor doctor2 : WestminsterSkinConsultationManager.doctorArray) {
+                                                                                                                // Check if the doctor is available at the selected time slot
+                                                                                                                boolean isAvailable = true;
+                                                                                                                for (Consultation consultation1 : WestminsterSkinConsultationManager.consulationsArray) {
+                                                                                                                        if (consultation1.getDoctor().getMedicalLicenseNumber().equals(doctor2.getMedicalLicenseNumber()) && consultation1.getConsultationDate().equals(selectedDateString) && consultation1.getConsultationTime().equals(selectedTimeSlot)) {
+                                                                                                                                isAvailable = false;
+                                                                                                                                break;
+                                                                                                                        }
+                                                                                                                }
+                                                                                                                // Add the doctor to the list of available doctors if they are available at the selected time slot
+                                                                                                                if (isAvailable) {
+                                                                                                                        availableDoctors.add(doctor2);
+                                                                                                                }
+                                                                                                        }
+                                                                                                        // Assigning the consultation to the available doctor
+                                                                                                        if (availableDoctors.isEmpty()) {
+                                                                                                                JOptionPane.showMessageDialog(null, "There are no doctors available at the selected time slot.", "Error", JOptionPane.INFORMATION_MESSAGE);
+                                                                                                                return;
+                                                                                                        }
+                                                                                                        // Randomly select a doctor from the list of available doctors
+                                                                                                        int randomIndex = new Random().nextInt(availableDoctors.size());
+                                                                                                        Doctor doctor3 = availableDoctors.get(randomIndex);
+
+                                                                                                        // Assigning the consultation to the randomly selected doctor
                                                                                                         WestminsterSkinConsultationManager.consulationsArray.add
-                                                                                                                (new Consultation(doctor, new Patient(patientName, patientSurname, patientContact, patientDOBString, patientNIC, "30024425v2"),
-                                                                                                                        selectedDateString, selectedTimeSlot, consultPrice, patientNotes));
-                                                                                                        JOptionPane.showMessageDialog(null, "Consultation booked successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-                                                                                                        System.out.println(WestminsterSkinConsultationManager.consulationsArray.toString());
+                                                                                                                (new Consultation(doctor3, new Patient(patientName, patientSurname, patientContact, patientDOBString, patientNIC, patientID),
+                                                                                                                        selectedDateString, selectedTimeSlot, consultPrice, patientNotes, consultationID));
+
+                                                                                                        JOptionPane.showMessageDialog(null, "Consultation booked successfully, under: "+ doctor3.getName()+" ("+doctor3.getSpecialization()+")\n Consultation Cost: £"+consultPrice, "Success", JOptionPane.INFORMATION_MESSAGE);
+
+                                                                                                        ((DefaultTableModel) consultationTable.getModel()).addRow(new Object[]{doctor3.getName() + " " + doctor3.getSurName(),
+                                                                                                                doctor3.getSpecialization(), patientName + " " + patientSurname, patientID, selectedDateString, selectedTimeSlot, "£ " + consultPrice,consultationID});
+
                                                                                                         // Clear the fields
                                                                                                         doctorComboBox.setSelectedIndex(0);
                                                                                                         datePicker.getModel().setSelected(false);
@@ -503,21 +668,96 @@ public class WestminsterSkinConsultationClinic_GUI {
                                                                                                         consultationsPanel.setVisible(false);
                                                                                                         return;
 
-                                                                                                } else {
-                                                                                                        JOptionPane.showMessageDialog(null, "The maximum number of consultations has been reached.", "Error", JOptionPane.ERROR_MESSAGE);
-                                                                                                        break;
+                                                                                                }else {
+                                                                                                                WestminsterSkinConsultationManager.consulationsArray.add
+                                                                                                                        (new Consultation(doctor, new Patient(patientName, patientSurname, patientContact, patientDOBString, patientNIC, patientID),
+                                                                                                                                selectedDateString, selectedTimeSlot, consultPrice, patientNotes, consultationID));
+                                                                                                                JOptionPane.showMessageDialog(null, "Consultation booked successfully.\n Consultation Cost :£"+consultPrice, "Success", JOptionPane.INFORMATION_MESSAGE);
+                                                                                                                ((DefaultTableModel) consultationTable.getModel()).addRow(new Object[]{doctor.getName() + " " + doctor.getSurName(),
+                                                                                                                        doctor.getSpecialization(), patientName + " " + patientSurname, patientID, selectedDateString, selectedTimeSlot, "£ " + consultPrice,consultationID});
+                                                                                                                // Clear the fields
+                                                                                                                doctorComboBox.setSelectedIndex(0);
+                                                                                                                datePicker.getModel().setSelected(false);
+                                                                                                                timeSlotComboBox.setSelectedIndex(0);
+                                                                                                                durationComboBox.setSelectedIndex(0);
+                                                                                                                patientNameTextField.setText("");
+                                                                                                                patientSurnameTextField.setText("");
+                                                                                                                patientContactTextField.setText("");
+                                                                                                                patientNICTextField.setText("");
+                                                                                                                patientNotesTextArea.setText("");
+                                                                                                                //go back to home panel
+                                                                                                                mainPanel.setVisible(true);
+                                                                                                                consultationsPanel.setVisible(false);
+                                                                                                                return;
+
                                                                                                 }
                                                                                         }
+                                                                                        break;
                                                                                 }
-                                                                                break;
                                                                         }
                                                                 }
+                                                        } catch (NumberFormatException i) {
+                                                                JOptionPane.showMessageDialog(null, "Please enter a valid contact number and NIC number.", "Error", JOptionPane.ERROR_MESSAGE);
+                                                                break;
                                                         }
-                                                }catch (NumberFormatException i){
-                                                        JOptionPane.showMessageDialog(null, "Please enter a valid contact number and NIC number.", "Error", JOptionPane.ERROR_MESSAGE);
-                                                        break;
                                                 }
                                         }
+                                }
+                        }
+                });
+
+                imageUploadButton.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+//                                // Create a file chooser
+//                                JFileChooser fileChooser = new JFileChooser();
+//                                fileChooser.setDialogTitle("Choose an image");
+//                                fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+//                                fileChooser.setAcceptAllFileFilterUsed(false);
+//                                FileNameExtensionFilter filter = new FileNameExtensionFilter("Image Files", "jpg", "png", "gif", "jpeg");
+//                                fileChooser.addChoosableFileFilter(filter);
+//                                int returnValue = fileChooser.showOpenDialog(null);
+//                                if (returnValue == JFileChooser.APPROVE_OPTION) {
+//                                        File selectedFile = fileChooser.getSelectedFile();
+//                                        String filePath = selectedFile.getAbsolutePath();
+//                                        ImageIcon imageIcon = new ImageIcon(filePath);
+//                                        Image image = imageIcon.getImage();
+//                                        Image newImage = image.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+//                                        imageIcon = new ImageIcon(newImage);
+//                                        patientImageLabel.setIcon(imageIcon);
+//                                        patientImageLabel.setText("");
+//                                }
+                        }
+                });
+
+                // Add a mouse listener to the table to detect when a row is clicked
+                consultationTable.addMouseListener(new java.awt.event.MouseAdapter() {
+                        @Override
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                int row = consultationTable.rowAtPoint(evt.getPoint());
+                                int col = consultationTable.columnAtPoint(evt.getPoint());
+                                if (row >= 0 && col >= 0) {
+                                        // Get the value of the cell at the clicked location
+                                        Object value = consultationTable.getValueAt(row, col);
+                                        // Get the consultation ID of the selected row
+                                        detailsModel.addRow(new Object[]{"ID", consultationTable.getValueAt(row, 0)});
+                                        detailsModel.addRow(new Object[]{"Name", consultationTable.getValueAt(row, 1)});
+                                        detailsModel.addRow(new Object[]{"Details", consultationTable.getValueAt(row, 2)});
+
+
+                                        // Show details in new panel
+
+                                        bookedConsultationsPanel.setVisible(false);
+                                        checkConsultationPanel.setVisible(true);
+
+//                                        // Display the details table in a separate window or panel
+//                                        JFrame detailsFrame = new JFrame();
+//                                        detailsFrame.add(new JScrollPane(detailsTable));
+//                                        detailsFrame.pack();
+//                                        frame.add(detailsFrame);
+//                                        detailsFrame.setVisible(true);
+
+
                                 }
                         }
                 });

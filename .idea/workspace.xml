@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f5bbf9a6-4e20-436e-944e-bd11eb1451f4" name="Changes" comment="validated all user inputs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Doctors.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DoctorsDetails.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DoctorsDetails.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/Consultation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/Consultation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/Patient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/WestminsterSkinConsultationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/WestminsterSkinConsultationManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$1.class" afterDir="false" />
@@ -116,6 +116,12 @@
       <workItem from="1672511630850" duration="4159000" />
       <workItem from="1672555392367" duration="9456000" />
       <workItem from="1672584884621" duration="16197000" />
+      <workItem from="1672630288117" duration="13819000" />
+      <workItem from="1672676844551" duration="10563000" />
+      <workItem from="1672809718869" duration="858000" />
+      <workItem from="1672811343622" duration="347000" />
+      <workItem from="1672845949485" duration="3899000" />
+      <workItem from="1672895839538" duration="14526000" />
     </task>
     <task id="LOCAL-00001" summary="validated all user inputs">
       <created>1672114317152</created>
