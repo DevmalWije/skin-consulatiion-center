@@ -3,12 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="f5bbf9a6-4e20-436e-944e-bd11eb1451f4" name="Changes" comment="validated all user inputs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Doctors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DoctorsDetails.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DoctorsDetails.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/Consultation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/Consultation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/CustomButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/CustomButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/WestminsterSkinConsultationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Westminster skin consulation center/src/phase1ToPhase3/WestminsterSkinConsultationManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$11.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$4.class" afterDir="false" />
@@ -16,6 +16,7 @@
       <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$6.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$7.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI$9.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationClinic_GUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/W1912859-skn-consulatiion-center/phase1ToPhase3/WestminsterSkinConsultationManager.class" afterDir="false" />
     </list>
@@ -42,20 +43,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Devmal/Desktop/jdatepicker-1.3.4.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
+    "last_opened_file_path": "C:/Users/Devmal/Desktop/jdatepicker-1.3.4.jar",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\IIT courswork\L-5-SE-2023\5COSC019C.1 Object Oriented Programming\CW\W1912859-skn-consulatiion-center\Westminster skin consulation center\src\phase1ToPhase3" />
@@ -122,6 +124,7 @@
       <workItem from="1672811343622" duration="347000" />
       <workItem from="1672845949485" duration="3899000" />
       <workItem from="1672895839538" duration="14526000" />
+      <workItem from="1672938878323" duration="17936000" />
     </task>
     <task id="LOCAL-00001" summary="validated all user inputs">
       <created>1672114317152</created>

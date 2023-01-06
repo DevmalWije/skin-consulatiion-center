@@ -4,10 +4,7 @@ package phase1ToPhase3;
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class WestminsterSkinConsultationManager implements SkinConsultationManager {
@@ -17,6 +14,8 @@ public class WestminsterSkinConsultationManager implements SkinConsultationManag
     static ArrayList<Consultation> consulationsArray = new ArrayList<Consultation>();
 
     static ArrayList<File> ImageArray = new ArrayList<File>();
+
+    static Map<String,File>ImageMap = new HashMap<String,File>();
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
         Scanner sc=new Scanner(System.in);
@@ -39,7 +38,7 @@ public class WestminsterSkinConsultationManager implements SkinConsultationManag
         System.out.println("Welcome to Westminster Skin Consultation Center");
         getSavedDoctorList();
 
-        consulationsArray.add(new Consultation(doctorArray.get(0),new Patient("John", "Smith", "0777777777", "05/01/1990", "123456789V","01029001"),"05/01/2023","8:00",10,"Notes","01029001"));
+        consulationsArray.add(new Consultation(doctorArray.get(0),new Patient("John", "Smith", "0777777777", "05/01/1990", "123456789V","01029001"),"05/01/2023","8:00",10,"by lord this mans sick, get him some milk!! asdasd asd asd asdasdasdadads a asdaa dasd asd asd asdadad adssada sdadasd","01029001"));
         consulationsArray.add(new Consultation(doctorArray.get(0),new Patient("jane", "asd", "0777777777", "01/01/1990", "123456789V","01029001"),"02/01/2023","18:00",10,"Notes","01029001"));
         consulationsArray.add(new Consultation(doctorArray.get(0),new Patient("mary", "asd", "0777777777", "01/01/1990", "123456789V","01029001"),"02/01/2023","12:00",10,"Notes","01029001"));
         consulationsArray.add(new Consultation(doctorArray.get(0),new Patient("Viktor", "Smasdith", "0777777777", "01/01/1990", "123456789V","01029001"),"02/01/2023","9:00",10,"Notes","01029001"));

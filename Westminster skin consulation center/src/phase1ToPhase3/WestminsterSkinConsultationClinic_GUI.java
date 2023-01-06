@@ -49,7 +49,7 @@ public class WestminsterSkinConsultationClinic_GUI {
                 //creating buttons
                 JButton ConsultationButton = new JButton("Book consultation");
                 JButton doctorListButton = new JButton("Doctor list");
-                JButton bookedConsultationsButton = new JButton("currently Booked consultations");
+                JButton bookedConsultationsButton = new JButton("Currently Booked Consultations");
                 JButton backButton1 = new JButton("< Back");
                 JButton backButton2 = new JButton("< Back");
                 JButton backButton3 = new JButton("< Back");
@@ -57,7 +57,8 @@ public class WestminsterSkinConsultationClinic_GUI {
                 JButton bookButton = new JButton("Book consultation");
                 JButton doctorSortButton = new JButton("Sort Doctor by Name");
                 JButton imageUploadButton = new JButton("\uD83D\uDCC4");
-                JButton checkConsultationButton = new JButton("Check Your Consultation");
+
+                //creating image model
 
 
                 //setting button bounds
@@ -93,8 +94,14 @@ public class WestminsterSkinConsultationClinic_GUI {
 
                 imageUploadButton.setBounds(480,250,150,35);
 
-                checkConsultationButton.setBounds(0, 0, 300, 50);
-                checkConsultationButton.setFont(new Font("poppins", Font.PLAIN, 16));
+                //creating file chooser object
+                JFileChooser patientImageFileChooser = new JFileChooser();
+
+                //setting file chooser filter
+                patientImageFileChooser.setAcceptAllFileFilterUsed(false);
+                patientImageFileChooser.setFileFilter(new FileNameExtensionFilter("Image Files", "jpg", "png", "jpeg"));
+                patientImageFileChooser.setMultiSelectionEnabled(true);
+
                 //creating doctor table model
                 DefaultTableModel doctorTableModel = new DefaultTableModel();
 
@@ -116,7 +123,7 @@ public class WestminsterSkinConsultationClinic_GUI {
                         String NIC = doctor.getNIC();
                         String specialization = doctor.getSpecialization();
                         String licenseNumber = doctor.getMedicalLicenseNumber();
-                                doctorTableModel.addRow(new Object[]{name, surname, mobileNumber, dateOfBirth, NIC, specialization, licenseNumber});
+                        doctorTableModel.addRow(new Object[]{name, surname, mobileNumber, dateOfBirth, NIC, specialization, licenseNumber});
 //                        doctorTableModel.addRow(new Object[]{doctor.getName(), doctor.getSurName(), doctor.getMobileNumber(), doctor.getDateOfBirth(), doctor.getNIC(), doctor.getSpecialization(), doctor.getLicenseNumber()});
                 }
 
@@ -167,9 +174,22 @@ public class WestminsterSkinConsultationClinic_GUI {
 
                 // Create a new table to show more details about the clicked row
                 JTable detailsTable = new JTable();
+                detailsTable.setBounds(0, 0, 750, 300);
+                detailsTable.setRowHeight(15);
+                detailsTable.setEnabled(false);
+
+                detailsTable.setFont(new Font("poppins", Font.PLAIN, 13));
+                detailsTable.setBackground(new Color(121, 152, 201));
+                detailsTable.setForeground(Color.WHITE);
+
+                JTableHeader detailsTableHeader = detailsTable.getTableHeader();
+                detailsTableHeader.setFont(new Font("poppins", Font.BOLD, 13));
+                detailsTableHeader.setBackground(new Color(0x123456));
+                detailsTableHeader.setForeground(Color.WHITE);
+
                 DefaultTableModel detailsModel = new DefaultTableModel();
                 detailsModel.addColumn("Attribute");
-                detailsModel.addColumn("Value");
+                detailsModel.addColumn("Details");
                 detailsTable.setModel(detailsModel);
 
 
@@ -273,6 +293,13 @@ public class WestminsterSkinConsultationClinic_GUI {
                 checkConsultationPanel.setLayout(new BorderLayout());
                 checkConsultationPanel.setPreferredSize(new Dimension(750, 500));
 
+                JFrame imagePanel = new JFrame();
+                imagePanel.setLayout(new BorderLayout());
+                imagePanel.setSize(750,500);
+                imagePanel.setVisible(false);
+                imagePanel.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+
                 //creating JdatePicker component
                 UtilDateModel model = new UtilDateModel();
                 Properties p = new Properties();
@@ -323,6 +350,13 @@ public class WestminsterSkinConsultationClinic_GUI {
                 patientNotesTextArea.setWrapStyleWord(true);
                 patientNotesTextArea.setBorder(BorderFactory.createLineBorder(new Color(230, 238, 246)));
 
+                JTextArea bookedConsultNotesArea = new JTextArea();
+                bookedConsultNotesArea.setBounds(0, 0, 200, 100);
+                bookedConsultNotesArea.setFont(new Font("poppins", Font.PLAIN, 16));
+                bookedConsultNotesArea.setLineWrap(true);
+                bookedConsultNotesArea.setWrapStyleWord(true);
+                bookedConsultNotesArea.setBorder(BorderFactory.createLineBorder(new Color(230, 238, 246)));
+
                 JTextArea selectedDoctorField = new JTextArea("_ _ _ _ _ _ _ _ _");
                 selectedDoctorField.setBounds(480, 50, 220, 30);
                 selectedDoctorField.setFont(new Font("poppins", Font.PLAIN, 16));
@@ -330,6 +364,8 @@ public class WestminsterSkinConsultationClinic_GUI {
                 selectedDoctorField.setFocusable(false);
                 selectedDoctorField.setLineWrap(true);
                 selectedDoctorField.setBackground(new Color(238, 238, 238));
+
+
 
 
                 //adding components to  "main" panel
@@ -369,18 +405,22 @@ public class WestminsterSkinConsultationClinic_GUI {
                 consultationsPanel.add(patientNICTextField);
                 consultationsPanel.add(imageUploadLabel);
                 consultationsPanel.add(imageUploadButton);
+                consultationsPanel.add(patientImageFileChooser);
                 consultationsPanel.add(patientNotesLabel);
                 consultationsPanel.add(patientNotesTextArea);
                 consultationsPanel.add(selectedDoctorField);
                 consultationsPanel.add(bookButton);
 
+
+
                 //adding components to "bookedConsultationsPanel" panel
                 bookedConsultationsPanel.add(backButton3, BorderLayout.NORTH);
                 bookedConsultationsPanel.add(new JScrollPane(consultationTable), BorderLayout.CENTER);
-                bookedConsultationsPanel.add(checkConsultationButton, BorderLayout.SOUTH);
 
+                //adding components to "checkConsultationPanel" panel
                 checkConsultationPanel.add(backButton4, BorderLayout.NORTH);
                 checkConsultationPanel.add(new JScrollPane(detailsTable), BorderLayout.CENTER);
+                checkConsultationPanel.add(bookedConsultNotesArea, BorderLayout.SOUTH);
 
 
                 //Making container panel
@@ -446,8 +486,6 @@ public class WestminsterSkinConsultationClinic_GUI {
                                 consultationsPanel.setVisible(false);
                                 doctorListPanel.setVisible(false);
                                 bookedConsultationsPanel.setVisible(false);
-                                checkConsultationPanel.setVisible(false);
-                                detailsModel.setRowCount(0);
                         }
                 };
 
@@ -455,12 +493,12 @@ public class WestminsterSkinConsultationClinic_GUI {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                                //sorting doctor table by first coloumn (name)
-                                TableRowSorter<TableModel> sorter = new TableRowSorter<>(doctorTable.getModel());
-                                doctorTable.setRowSorter(sorter);
+                                TableRowSorter<TableModel> sorter = new TableRowSorter<>(doctorTableModel);
                                 List<RowSorter.SortKey> sortKeys = new ArrayList<>();
-                                sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));
+                                sortKeys.add(new RowSorter.SortKey(1, SortOrder.ASCENDING));
+                                doctorTable.setRowSorter(sorter);
                                 sorter.setSortKeys(sortKeys);
-                                sorter.sort();
+//                                sorter.sort();
 
                         }
                 });
@@ -471,10 +509,16 @@ public class WestminsterSkinConsultationClinic_GUI {
                 backButton1.addActionListener(backButtonListener);
                 backButton2.addActionListener(backButtonListener);
                 backButton3.addActionListener(backButtonListener);
-                backButton4.addActionListener(backButtonListener);
 
-
-
+                backButton4.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                                //Switch to Check Consultation Panel
+                                checkConsultationPanel.setVisible(false);
+                                bookedConsultationsPanel.setVisible(true);
+                                detailsModel.setRowCount(0);
+                        }
+                });
                 //adding action listener to doctor combobox
                 doctorComboBox.addActionListener(new ActionListener() {
                         @Override
@@ -520,6 +564,25 @@ public class WestminsterSkinConsultationClinic_GUI {
                                 }
                         }
                 });
+                imageUploadButton.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                                int returnVal = patientImageFileChooser.showOpenDialog(null);
+                                if(returnVal==JFileChooser.APPROVE_OPTION){
+                                        File[] files = patientImageFileChooser.getSelectedFiles();
+                                        System.out.println(files[0].getAbsolutePath());
+                                        System.out.println(files[0].getName());
+                                        WestminsterSkinConsultationManager.ImageArray.addAll(Arrays.asList(files));
+//                                        for (File file : WestminsterSkinConsultationManager.ImageArray) {
+//                                                JLabel imageLabel = new JLabel(new ImageIcon(file.getAbsolutePath()));
+//                                                imagePanel.add(imageLabel, BorderLayout.CENTER);
+//                                                imagePanel.setVisible(true);
+//                                        }
+                                }
+                        }
+                });
+
+
 
                 //adding action listener to book button
                 bookButton.addActionListener(new ActionListener() {
@@ -527,6 +590,8 @@ public class WestminsterSkinConsultationClinic_GUI {
                         public void actionPerformed(ActionEvent e) {
                                 if (datePicker.getJFormattedTextField().getText().equals("") || DOBDatePicker.getJFormattedTextField().getText().equals("")) {
                                         JOptionPane.showMessageDialog(null, "Please fill all the fields.", "Error", JOptionPane.ERROR_MESSAGE);
+                                } else if (WestminsterSkinConsultationManager.ImageArray.size() == 0) {
+                                        JOptionPane.showMessageDialog(null, "Please upload patient images.", "Error", JOptionPane.ERROR_MESSAGE);
                                 } else {
 
                                         // Get the selected doctor
@@ -594,7 +659,6 @@ public class WestminsterSkinConsultationClinic_GUI {
                                                         consultPrice = duration * 25;
                                                 }
                                         }
-
                                         // Checking for empty fields
                                         while (true) {
                                                 if (selectedDoctor == null || selectedDate == null || patientDOB == null || selectedTimeSlot == null || patientName.isEmpty() || patientSurname.isEmpty() || patientContact.isEmpty() || patientNIC.isEmpty() || patientNotes.isEmpty()) {
@@ -648,6 +712,16 @@ public class WestminsterSkinConsultationClinic_GUI {
                                                                                                                 (new Consultation(doctor3, new Patient(patientName, patientSurname, patientContact, patientDOBString, patientNIC, patientID),
                                                                                                                         selectedDateString, selectedTimeSlot, consultPrice, patientNotes, consultationID));
 
+                                                                                                        //adding patient images to Map
+                                                                                                        for (File file:WestminsterSkinConsultationManager.ImageArray) {
+
+                                                                                                                WestminsterSkinConsultationManager.ImageMap.put(consultationID, file);
+                                                                                                        }
+
+                                                                                                        // Clearing the image array
+                                                                                                        WestminsterSkinConsultationManager.ImageArray.clear();
+
+                                                                                                        // Clearing the fields and showing success message
                                                                                                         JOptionPane.showMessageDialog(null, "Consultation booked successfully, under: "+ doctor3.getName()+" ("+doctor3.getSpecialization()+")\n Consultation Cost: £"+consultPrice, "Success", JOptionPane.INFORMATION_MESSAGE);
 
                                                                                                         ((DefaultTableModel) consultationTable.getModel()).addRow(new Object[]{doctor3.getName() + " " + doctor3.getSurName(),
@@ -669,12 +743,22 @@ public class WestminsterSkinConsultationClinic_GUI {
                                                                                                         return;
 
                                                                                                 }else {
+                                                                                                        // Assigning the consultation to the selected doctor
                                                                                                                 WestminsterSkinConsultationManager.consulationsArray.add
                                                                                                                         (new Consultation(doctor, new Patient(patientName, patientSurname, patientContact, patientDOBString, patientNIC, patientID),
                                                                                                                                 selectedDateString, selectedTimeSlot, consultPrice, patientNotes, consultationID));
                                                                                                                 JOptionPane.showMessageDialog(null, "Consultation booked successfully.\n Consultation Cost :£"+consultPrice, "Success", JOptionPane.INFORMATION_MESSAGE);
-                                                                                                                ((DefaultTableModel) consultationTable.getModel()).addRow(new Object[]{doctor.getName() + " " + doctor.getSurName(),
+
+                                                                                                        for (File file:WestminsterSkinConsultationManager.ImageArray) {
+                                                                                                                //adding patient images to Map
+                                                                                                                WestminsterSkinConsultationManager.ImageMap.put(consultationID, file);
+                                                                                                        }
+                                                                                                        // Clearing the image array
+                                                                                                        WestminsterSkinConsultationManager.ImageArray.clear();
+
+                                                                                                        ((DefaultTableModel) consultationTable.getModel()).addRow(new Object[]{doctor.getName() + " " + doctor.getSurName(),
                                                                                                                         doctor.getSpecialization(), patientName + " " + patientSurname, patientID, selectedDateString, selectedTimeSlot, "£ " + consultPrice,consultationID});
+
                                                                                                                 // Clear the fields
                                                                                                                 doctorComboBox.setSelectedIndex(0);
                                                                                                                 datePicker.getModel().setSelected(false);
@@ -706,29 +790,6 @@ public class WestminsterSkinConsultationClinic_GUI {
                         }
                 });
 
-                imageUploadButton.addActionListener(new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-//                                // Create a file chooser
-//                                JFileChooser fileChooser = new JFileChooser();
-//                                fileChooser.setDialogTitle("Choose an image");
-//                                fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-//                                fileChooser.setAcceptAllFileFilterUsed(false);
-//                                FileNameExtensionFilter filter = new FileNameExtensionFilter("Image Files", "jpg", "png", "gif", "jpeg");
-//                                fileChooser.addChoosableFileFilter(filter);
-//                                int returnValue = fileChooser.showOpenDialog(null);
-//                                if (returnValue == JFileChooser.APPROVE_OPTION) {
-//                                        File selectedFile = fileChooser.getSelectedFile();
-//                                        String filePath = selectedFile.getAbsolutePath();
-//                                        ImageIcon imageIcon = new ImageIcon(filePath);
-//                                        Image image = imageIcon.getImage();
-//                                        Image newImage = image.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
-//                                        imageIcon = new ImageIcon(newImage);
-//                                        patientImageLabel.setIcon(imageIcon);
-//                                        patientImageLabel.setText("");
-//                                }
-                        }
-                });
 
                 // Add a mouse listener to the table to detect when a row is clicked
                 consultationTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -740,22 +801,40 @@ public class WestminsterSkinConsultationClinic_GUI {
                                         // Get the value of the cell at the clicked location
                                         Object value = consultationTable.getValueAt(row, col);
                                         // Get the consultation ID of the selected row
-                                        detailsModel.addRow(new Object[]{"ID", consultationTable.getValueAt(row, 0)});
-                                        detailsModel.addRow(new Object[]{"Name", consultationTable.getValueAt(row, 1)});
-                                        detailsModel.addRow(new Object[]{"Details", consultationTable.getValueAt(row, 2)});
-
-
-                                        // Show details in new panel
-
+                                        for (Consultation consultation : WestminsterSkinConsultationManager.consulationsArray) {
+                                                if (consultation.getConsultationID().equals(consultationTable.getValueAt(row, 7))) {
+                                                        detailsModel.addRow(new Object[]{"Doctor Name", consultation.getDoctor().getName() + " " + consultation.getDoctor().getSurName()});
+                                                        detailsModel.addRow(new Object[]{"Doctor Specialization", consultation.getDoctor().getSpecialization()});
+                                                        detailsModel.addRow(new Object[]{"Patient Name", consultation.getPatient().getName() + " " + consultation.getPatient().getSurName()});
+                                                        detailsModel.addRow(new Object[]{"Patient ID", consultation.getPatient().getPatientID()});
+                                                        detailsModel.addRow(new Object[]{"Patient Contact", consultation.getPatient().getMobileNumber()});
+                                                        detailsModel.addRow(new Object[]{"Patient NIC", consultation.getPatient().getNIC()});
+                                                        detailsModel.addRow(new Object[]{"Patient Date of Birth", consultation.getPatient().getDateOfBirth()});
+                                                        detailsModel.addRow(new Object[]{"Consultation Date", consultation.getConsultationDate()});
+                                                        detailsModel.addRow(new Object[]{"Consultation Time", consultation.getConsultationTime()});
+                                                        detailsModel.addRow(new Object[]{"Consultation Fee", consultation.getConsultationFee()});
+                                                        detailsModel.addRow(new Object[]{"Consultation ID", consultation.getConsultationID()});
+                                                        bookedConsultNotesArea.setText("Consult Notes :: "+consultation.getConsultationNotes());
+                                                        JLabel imageLabel = new JLabel();
+                                                        if (WestminsterSkinConsultationManager.ImageMap.containsKey(consultation.getConsultationID())) {
+                                                                // Displaying the patient images
+                                                                ImageIcon imageIcon = new ImageIcon(WestminsterSkinConsultationManager.ImageMap.get(consultation.getConsultationID()).getAbsolutePath());
+                                                                Image image = imageIcon.getImage();
+                                                                Image newImage = image.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+                                                                imageIcon = new ImageIcon(newImage);
+                                                                imageLabel.setIcon(imageIcon);
+                                                                imagePanel.add(imageLabel, BorderLayout.CENTER);
+                                                                imagePanel.setVisible(true);
+                                                        }else {
+                                                                break;
+                                                        }
+                                                        break;
+                                                }
+                                        }
+                                        // Show details in panel
                                         bookedConsultationsPanel.setVisible(false);
                                         checkConsultationPanel.setVisible(true);
 
-//                                        // Display the details table in a separate window or panel
-//                                        JFrame detailsFrame = new JFrame();
-//                                        detailsFrame.add(new JScrollPane(detailsTable));
-//                                        detailsFrame.pack();
-//                                        frame.add(detailsFrame);
-//                                        detailsFrame.setVisible(true);
 
 
                                 }
