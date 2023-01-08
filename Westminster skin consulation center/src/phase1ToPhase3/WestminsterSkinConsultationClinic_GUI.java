@@ -13,9 +13,15 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.jdatepicker.impl.DateComponentFormatter;
 import org.jdatepicker.impl.JDatePanelImpl;
@@ -27,6 +33,10 @@ import static phase1ToPhase3.WestminsterSkinConsultationManager.doctorArray;
 
 public class WestminsterSkinConsultationClinic_GUI {
         public static void main(String[] args) {
+
+                ArrayList<File> ImageArray = new ArrayList<File>();
+
+                JLabel imageLabel = new JLabel();
 
                 //setting header label
                 JLabel HeaderLabel = new JLabel("Westminster Skin");
@@ -57,6 +67,9 @@ public class WestminsterSkinConsultationClinic_GUI {
                 JButton bookButton = new JButton("Book consultation");
                 JButton doctorSortButton = new JButton("Sort Doctor by Name");
                 JButton imageUploadButton = new JButton("\uD83D\uDCC4");
+                JButton deleteConsultationButton = new JButton("Delete consultation");
+                JButton confirmDeleteButton = new JButton("Confirm");
+
 
                 //creating image model
 
@@ -91,6 +104,14 @@ public class WestminsterSkinConsultationClinic_GUI {
 
                 doctorSortButton.setBounds(0, 0, 300, 50);
                 doctorSortButton.setFont(new Font("poppins", Font.PLAIN, 16));
+
+                deleteConsultationButton.setBounds(0, 0, 300, 50);
+                deleteConsultationButton.setFont(new Font("poppins", Font.PLAIN, 16));
+
+                confirmDeleteButton.setBounds(-2, 260, 350, 50);
+                confirmDeleteButton.setFont(new Font("poppins", Font.PLAIN, 16));
+                confirmDeleteButton.setBackground(new Color(232, 74, 95));
+                confirmDeleteButton.setForeground(Color.WHITE);
 
                 imageUploadButton.setBounds(480,250,150,35);
 
@@ -147,6 +168,7 @@ public class WestminsterSkinConsultationClinic_GUI {
                 consultationTable.setBounds(0, 0, 750, 500);
                 consultationTable.setRowHeight(45);
                 consultationTable.setEnabled(false);
+                consultationTable.setCellSelectionEnabled(true);
                 consultationTable.setFont(new Font("poppins", Font.PLAIN, 13));
                 consultationTable.setBackground(new Color(121, 152, 201));
                 consultationTable.setForeground(Color.WHITE);
@@ -175,7 +197,7 @@ public class WestminsterSkinConsultationClinic_GUI {
                 // Create a new table to show more details about the clicked row
                 JTable detailsTable = new JTable();
                 detailsTable.setBounds(0, 0, 750, 300);
-                detailsTable.setRowHeight(15);
+                detailsTable.setRowHeight(45);
                 detailsTable.setEnabled(false);
 
                 detailsTable.setFont(new Font("poppins", Font.PLAIN, 13));
@@ -271,6 +293,26 @@ public class WestminsterSkinConsultationClinic_GUI {
                 imageUploadLabel.setBounds(325,240,300,50);
                 imageUploadLabel.setFont(new Font("poppins", Font.PLAIN, 16));
 
+                JLabel deleteConsultationFrameLabel = new JLabel("Delete Consultation By ID");
+                deleteConsultationFrameLabel.setBounds(17, 40, 300, 50);
+                deleteConsultationFrameLabel.setFont(new Font("poppins", Font.PLAIN, 23));
+                deleteConsultationFrameLabel.setForeground(new Color(232, 74, 95));
+
+
+                JLabel deleteConsultationLabel = new JLabel("Consultation ID :");
+                deleteConsultationLabel.setBounds(20, 121, 130, 50);
+                deleteConsultationLabel.setFont(new Font("poppins", Font.PLAIN, 16));
+
+
+                JComboBox<String> deleteConsultationBox = new JComboBox<>();
+                deleteConsultationBox.setBounds(150, 130, 150, 30);
+                deleteConsultationBox.setSelectedIndex(-1);
+                for (Consultation consultation : WestminsterSkinConsultationManager.consulationsArray) {
+                        deleteConsultationBox.addItem(consultation.getConsultationID());
+                }
+
+
+
 
                 //creating main panel
                 JPanel mainPanel = new JPanel();
@@ -293,11 +335,25 @@ public class WestminsterSkinConsultationClinic_GUI {
                 checkConsultationPanel.setLayout(new BorderLayout());
                 checkConsultationPanel.setPreferredSize(new Dimension(750, 500));
 
-                JFrame imagePanel = new JFrame();
-                imagePanel.setLayout(new BorderLayout());
-                imagePanel.setSize(750,500);
-                imagePanel.setVisible(false);
-                imagePanel.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                JFrame imageFrame = new JFrame("Patient Image");
+                imageFrame.setLayout(new BorderLayout());
+                imageFrame.setLocationRelativeTo(null);
+                imageFrame.setSize(750,500);
+                imageFrame.setVisible(false);
+
+                JFrame consultDeleteFrame = new JFrame("Delete Consultation");
+                consultDeleteFrame.setLayout(null);
+                consultDeleteFrame.setLocationRelativeTo(null);
+                consultDeleteFrame.setSize(350,350);
+                consultDeleteFrame.setVisible(false);
+                consultDeleteFrame.setResizable(false);
+                consultDeleteFrame.setBackground(new Color(0x123456));
+
+                consultDeleteFrame.add(deleteConsultationFrameLabel);
+                consultDeleteFrame.add(deleteConsultationLabel);
+                consultDeleteFrame.add(deleteConsultationBox);
+                consultDeleteFrame.add(confirmDeleteButton);
+
 
 
                 //creating JdatePicker component
@@ -416,6 +472,7 @@ public class WestminsterSkinConsultationClinic_GUI {
                 //adding components to "bookedConsultationsPanel" panel
                 bookedConsultationsPanel.add(backButton3, BorderLayout.NORTH);
                 bookedConsultationsPanel.add(new JScrollPane(consultationTable), BorderLayout.CENTER);
+                bookedConsultationsPanel.add(deleteConsultationButton, BorderLayout.SOUTH);
 
                 //adding components to "checkConsultationPanel" panel
                 checkConsultationPanel.add(backButton4, BorderLayout.NORTH);
@@ -446,7 +503,7 @@ public class WestminsterSkinConsultationClinic_GUI {
                 frame.setLocationRelativeTo(null);
                 frame.add(containerPanel);
                 frame.setVisible(true);
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 
 
                 //adding action listeners to buttons
@@ -570,14 +627,12 @@ public class WestminsterSkinConsultationClinic_GUI {
                                 int returnVal = patientImageFileChooser.showOpenDialog(null);
                                 if(returnVal==JFileChooser.APPROVE_OPTION){
                                         File[] files = patientImageFileChooser.getSelectedFiles();
-                                        System.out.println(files[0].getAbsolutePath());
-                                        System.out.println(files[0].getName());
-                                        WestminsterSkinConsultationManager.ImageArray.addAll(Arrays.asList(files));
-//                                        for (File file : WestminsterSkinConsultationManager.ImageArray) {
-//                                                JLabel imageLabel = new JLabel(new ImageIcon(file.getAbsolutePath()));
-//                                                imagePanel.add(imageLabel, BorderLayout.CENTER);
-//                                                imagePanel.setVisible(true);
-//                                        }
+                                        // Filter the selected files to only include jpeg images
+                                        List<File> jpegFiles = Arrays.stream(files)
+                                                .filter(file -> file.getName().endsWith(".jpg") || file.getName().endsWith(".jpeg"))
+                                                .collect(Collectors.toList());
+
+                                        ImageArray.addAll(Arrays.asList(files));
                                 }
                         }
                 });
@@ -590,7 +645,7 @@ public class WestminsterSkinConsultationClinic_GUI {
                         public void actionPerformed(ActionEvent e) {
                                 if (datePicker.getJFormattedTextField().getText().equals("") || DOBDatePicker.getJFormattedTextField().getText().equals("")) {
                                         JOptionPane.showMessageDialog(null, "Please fill all the fields.", "Error", JOptionPane.ERROR_MESSAGE);
-                                } else if (WestminsterSkinConsultationManager.ImageArray.size() == 0) {
+                                } else if (ImageArray.size() == 0) {
                                         JOptionPane.showMessageDialog(null, "Please upload patient images.", "Error", JOptionPane.ERROR_MESSAGE);
                                 } else {
 
@@ -698,7 +753,7 @@ public class WestminsterSkinConsultationClinic_GUI {
                                                                                                                         availableDoctors.add(doctor2);
                                                                                                                 }
                                                                                                         }
-                                                                                                        // Assigning the consultation to the available doctor
+                                                                                                        // Showing error if no doctors are available at the selected time slot
                                                                                                         if (availableDoctors.isEmpty()) {
                                                                                                                 JOptionPane.showMessageDialog(null, "There are no doctors available at the selected time slot.", "Error", JOptionPane.INFORMATION_MESSAGE);
                                                                                                                 return;
@@ -712,14 +767,13 @@ public class WestminsterSkinConsultationClinic_GUI {
                                                                                                                 (new Consultation(doctor3, new Patient(patientName, patientSurname, patientContact, patientDOBString, patientNIC, patientID),
                                                                                                                         selectedDateString, selectedTimeSlot, consultPrice, patientNotes, consultationID));
 
-                                                                                                        //adding patient images to Map
-                                                                                                        for (File file:WestminsterSkinConsultationManager.ImageArray) {
-
-                                                                                                                WestminsterSkinConsultationManager.ImageMap.put(consultationID, file);
-                                                                                                        }
-
+                                                                                                        //adding patient images
+                                                                                                        Path source = Paths.get(ImageArray.get(0).getAbsolutePath());
+                                                                                                        Path destination = Paths.get("patientImages\\"+consultationID+".png");
+                                                                                                        Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
                                                                                                         // Clearing the image array
-                                                                                                        WestminsterSkinConsultationManager.ImageArray.clear();
+                                                                                                        ImageArray.clear();
+
 
                                                                                                         // Clearing the fields and showing success message
                                                                                                         JOptionPane.showMessageDialog(null, "Consultation booked successfully, under: "+ doctor3.getName()+" ("+doctor3.getSpecialization()+")\n Consultation Cost: £"+consultPrice, "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -748,13 +802,12 @@ public class WestminsterSkinConsultationClinic_GUI {
                                                                                                                         (new Consultation(doctor, new Patient(patientName, patientSurname, patientContact, patientDOBString, patientNIC, patientID),
                                                                                                                                 selectedDateString, selectedTimeSlot, consultPrice, patientNotes, consultationID));
                                                                                                                 JOptionPane.showMessageDialog(null, "Consultation booked successfully.\n Consultation Cost :£"+consultPrice, "Success", JOptionPane.INFORMATION_MESSAGE);
-
-                                                                                                        for (File file:WestminsterSkinConsultationManager.ImageArray) {
-                                                                                                                //adding patient images to Map
-                                                                                                                WestminsterSkinConsultationManager.ImageMap.put(consultationID, file);
-                                                                                                        }
+                                                                                                                //adding patient images
+                                                                                                        Path source = Paths.get(ImageArray.get(0).getAbsolutePath());
+                                                                                                        Path destination = Paths.get("patientImages\\"+consultationID+".png");
+                                                                                                        Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
                                                                                                         // Clearing the image array
-                                                                                                        WestminsterSkinConsultationManager.ImageArray.clear();
+                                                                                                        ImageArray.clear();
 
                                                                                                         ((DefaultTableModel) consultationTable.getModel()).addRow(new Object[]{doctor.getName() + " " + doctor.getSurName(),
                                                                                                                         doctor.getSpecialization(), patientName + " " + patientSurname, patientID, selectedDateString, selectedTimeSlot, "£ " + consultPrice,consultationID});
@@ -783,9 +836,47 @@ public class WestminsterSkinConsultationClinic_GUI {
                                                         } catch (NumberFormatException i) {
                                                                 JOptionPane.showMessageDialog(null, "Please enter a valid contact number and NIC number.", "Error", JOptionPane.ERROR_MESSAGE);
                                                                 break;
+                                                        } catch (IOException ex) {
+                                                                throw new RuntimeException(ex);
                                                         }
                                                 }
                                         }
+                                }
+                        }
+                });
+
+                deleteConsultationButton.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                               consultDeleteFrame.setVisible(true);
+                        }
+                });
+
+                confirmDeleteButton.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                                String consultationID = (String) deleteConsultationBox.getSelectedItem();
+                                assert consultationID != null;
+                                if (consultationID.equals("")) {
+                                        JOptionPane.showMessageDialog(null, "Please enter a consultation ID.", "Error", JOptionPane.ERROR_MESSAGE);
+                                } else {
+                                        for (int i = 0; i < WestminsterSkinConsultationManager.consulationsArray.size(); i++) {
+                                                if (consultationID.equals(WestminsterSkinConsultationManager.consulationsArray.get(i).getConsultationID())) {
+                                                        WestminsterSkinConsultationManager.consulationsArray.remove(i);
+                                                        JOptionPane.showMessageDialog(null, "Consultation deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                                                        ((DefaultTableModel) consultationTable.getModel()).removeRow(i);
+                                                        File file = new File("patientImages\\"+consultationID+".jpg");
+                                                        if (file.exists()) {
+                                                                file.delete();
+                                                        }else {
+                                                                JOptionPane.showMessageDialog(null, "Consultation Had no images related.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                                                        }
+                                                        consultDeleteFrame.setVisible(false);
+                                                        deleteConsultationBox.removeItem(consultationID);
+                                                        return;
+                                                }
+                                        }
+                                        JOptionPane.showMessageDialog(null, "Consultation ID not found.", "Error", JOptionPane.ERROR_MESSAGE);
                                 }
                         }
                 });
@@ -815,25 +906,17 @@ public class WestminsterSkinConsultationClinic_GUI {
                                                         detailsModel.addRow(new Object[]{"Consultation Fee", consultation.getConsultationFee()});
                                                         detailsModel.addRow(new Object[]{"Consultation ID", consultation.getConsultationID()});
                                                         bookedConsultNotesArea.setText("Consult Notes :: "+consultation.getConsultationNotes());
-                                                        JLabel imageLabel = new JLabel();
-                                                        if (WestminsterSkinConsultationManager.ImageMap.containsKey(consultation.getConsultationID())) {
-                                                                // Displaying the patient images
-                                                                ImageIcon imageIcon = new ImageIcon(WestminsterSkinConsultationManager.ImageMap.get(consultation.getConsultationID()).getAbsolutePath());
-                                                                Image image = imageIcon.getImage();
-                                                                Image newImage = image.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
-                                                                imageIcon = new ImageIcon(newImage);
-                                                                imageLabel.setIcon(imageIcon);
-                                                                imagePanel.add(imageLabel, BorderLayout.CENTER);
-                                                                imagePanel.setVisible(true);
-                                                        }else {
-                                                                break;
-                                                        }
+                                                        imageLabel.setIcon(new ImageIcon("patientImages\\"+consultation.getConsultationID()+".jpg"));
+                                                        imageLabel.setBounds(0,0,500,750);
+                                                        imageFrame.remove(imageLabel);
+                                                        imageFrame.add(imageLabel, BorderLayout.CENTER);
                                                         break;
                                                 }
                                         }
                                         // Show details in panel
                                         bookedConsultationsPanel.setVisible(false);
                                         checkConsultationPanel.setVisible(true);
+                                        imageFrame.setVisible(true);
 
 
 
