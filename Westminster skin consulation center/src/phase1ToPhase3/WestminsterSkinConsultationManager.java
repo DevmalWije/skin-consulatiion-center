@@ -40,17 +40,20 @@ public class WestminsterSkinConsultationManager implements SkinConsultationManag
         Scanner sc=new Scanner(System.in);
         String Fname = null,Sname = null,Mobile = null,DOB = null,NIC = null,Specialization = null,LicenseNumber = null;
 
-        //CRUD for operations testing
-//        doctorArray.add(new Doctor("Will", "Smith", "0797767737", "01/01/1990", "123826789V", "Dermatologist", "8261437"));
-//        doctorArray.add(new Doctor("Mack", "Doe", "0776773697", "01/01/1990", "523456829V", "Pediatrics", "8796213"));
-//        doctorArray.add(new Doctor("Tonson", "Wadde", "0769776773", "01/06/1990", "823826789V", "Cardiology", "9683512"));
-//        doctorArray.add(new Doctor("Paneson", "Doe", "0697677377", "01/06/1990", "223482789W", "Orthopedics", "1496328"));
-//        doctorArray.add(new Doctor("Boh", "William", "0776967737", "01/06/1990", "428256789V", "Neurology", "6498721"));
+        //----------------------------------------------------------------------------CRUD for operations testing-------------------------------------------------------------------------//
+        //doctorArray.add(new Doctor("Will", "Smith", "0797767737", "01/01/1990", "123821236789V", "Dermatologist", "8261437"));
+//        doctorArray.add(new Doctor("Mack", "Doe", "0776773697", "01/01/1990", "523456812329V", "Pediatrics", "8796213"));
+//        doctorArray.add(new Doctor("Tonson", "Wadde", "0769776773", "01/06/1990", "821233826789V", "Cardiology", "9683512"));
+//        doctorArray.add(new Doctor("Paneson", "Doe", "0697677377", "01/06/1990", "223482123789W", "Orthopedics", "1496328"));
+//        doctorArray.add(new Doctor("Boh", "William", "0776967737", "01/06/1990", "428252316789V", "Neurology", "6498721"));
 //        doctorArray.add(new Doctor("Dohn", "Shakes", "0767737697", "01/06/1990", "328256789W", "Ophthalmology", "0824651"));
 //        doctorArray.add(new Doctor("Nyu", "gwen", "0697767737", "01/06/1990", "082456789", "Oncology", "2317496"));
 //        doctorArray.add(new Doctor("Kane", "Don", "0769767737", "01/06/1990", "323458289W", "Pulmonology", "9471265"));
 //        doctorArray.add(new Doctor("Wade", "Mackenosn", "0777577696","01/06/1990", "723826789V", "gynecology", "6381729"));
 //        doctorArray.add(new Doctor("Yashika", "Rvalipadi", "0797377697", "01/06/1990", "3282567882W", "Rheumatology", "0183652"));
+        //consulationsArray.add(new Consultation(doctorArray.get(2),new Patient("Bob", "cv", "0777777777", "01/01/1990", "123456789V","01029001"),"02/01/2023","11:00",10,"Notes","C00000652"));
+        //consulationsArray.add(new Consultation(doctorArray.get(0),new Patient("Mane", "wer", "0777777777", "01/01/1990", "123456789V","01029001"),"02/01/2023","13:00",10,"Notes","C00000991"));
+        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
 
         //getting saved sessions from files
@@ -61,15 +64,13 @@ public class WestminsterSkinConsultationManager implements SkinConsultationManag
         decryptImages("patientImages\\");
 
 
-//        consulationsArray.add(new Consultation(doctorArray.get(1),new Patient("Putin", "fgh", "0777777777", "01/01/1990", "123456789V","01029001"),"02/01/2023","10:00",10,"Notes","C00000325"));
-//        consulationsArray.add(new Consultation(doctorArray.get(5),new Patient("Gota", "cv", "0777777777", "01/01/1990", "123456789V","01029001"),"02/01/2023","11:00",10,"Notes","C00000652"));
-//        consulationsArray.add(new Consultation(doctorArray.get(3),new Patient("Maina", "wer", "0777777777", "01/01/1990", "123456789V","01029001"),"02/01/2023","13:00",10,"Notes","C00000991"));
+
 
         while (true) {
             System.out.println("1. Add Doctor");
             System.out.println("2. Remove Doctor");
             System.out.println("3. Display Doctors");
-            System.out.println("4. Save Doctors and consultation list");
+            System.out.println("4. Save Doctors");
             System.out.println("5. Run GUI center");
             System.out.println("6. Exit");
             System.out.print("choice--->>> ");
@@ -246,7 +247,8 @@ public class WestminsterSkinConsultationManager implements SkinConsultationManag
                     break;
 
                 case "5":
-                    //running GUI
+                    //running
+                    consulationsArray.add(new Consultation(doctorArray.get(0),new Patient("Putin", "fgh", "0777777777", "01/01/1990", "123456789V","01029001"),"20/01/2023","10:00",15,"Notes","C00000325"));
                     WestminsterSkinConsultationClinic_GUI.main(null);
                     break;
                 case "6":
@@ -420,7 +422,7 @@ public class WestminsterSkinConsultationManager implements SkinConsultationManag
 
             if (listOfImages.length != 0) {
                 for (File image : listOfImages) {
-                    if (!image.getName().endsWith(".jpg")) {
+                    if (!image.getName().endsWith(".png")) {
                         // Skip this file
                         continue;
                     }

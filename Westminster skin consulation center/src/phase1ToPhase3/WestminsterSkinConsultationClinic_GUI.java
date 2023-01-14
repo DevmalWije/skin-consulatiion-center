@@ -28,7 +28,6 @@ import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
-import static phase1ToPhase3.WestminsterSkinConsultationManager.doctorArray;
 
 
 public class WestminsterSkinConsultationClinic_GUI {
@@ -136,7 +135,7 @@ public class WestminsterSkinConsultationClinic_GUI {
                 doctorTableModel.addColumn("License #");
 
                 //adding rows to doctor table
-                for (Doctor doctor : doctorArray) {
+                for (Doctor doctor : WestminsterSkinConsultationManager.doctorArray) {
                         String name = doctor.getName();
                         String surname = doctor.getSurName();
                         String mobileNumber = doctor.getMobileNumber();
@@ -221,7 +220,7 @@ public class WestminsterSkinConsultationClinic_GUI {
 
 
                 //adding doctors to combobox
-                for (Doctor doctor : doctorArray) {
+                for (Doctor doctor : WestminsterSkinConsultationManager.doctorArray) {
                         doctorComboBox.addItem(doctor.getMedicalLicenseNumber());
                 }
                 doctorComboBox.setSelectedIndex(-1);
@@ -581,7 +580,7 @@ public class WestminsterSkinConsultationClinic_GUI {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                                 String selectedDoctor = (String) doctorComboBox.getSelectedItem();
-                                for (Doctor doctor : doctorArray) {
+                                for (Doctor doctor : WestminsterSkinConsultationManager.doctorArray) {
                                         if (doctor.getMedicalLicenseNumber().equals(selectedDoctor)) {
                                                 selectedDoctorField.setText(doctor.getName() + " " + doctor.getSurName() + " (" + doctor.getSpecialization() + ")");
                                         }
@@ -629,7 +628,7 @@ public class WestminsterSkinConsultationClinic_GUI {
                                         File[] files = patientImageFileChooser.getSelectedFiles();
                                         // Filter the selected files to only include jpeg images
                                         List<File> jpegFiles = Arrays.stream(files)
-                                                .filter(file -> file.getName().endsWith(".jpg") || file.getName().endsWith(".jpeg"))
+                                                .filter(file -> file.getName().endsWith(".jpg") || file.getName().endsWith(".jpeg")||file.getName().endsWith(".png"))
                                                 .collect(Collectors.toList());
 
                                         ImageArray.addAll(Arrays.asList(files));
@@ -652,7 +651,7 @@ public class WestminsterSkinConsultationClinic_GUI {
                                         // Get the selected doctor
                                         String selectedDoctor = (String) doctorComboBox.getSelectedItem();
                                         Doctor doctor = null;
-                                        for (Doctor doctor1 : doctorArray) {
+                                        for (Doctor doctor1 : WestminsterSkinConsultationManager.doctorArray) {
                                                 if (doctor1.getMedicalLicenseNumber().equals(selectedDoctor)) {
                                                         doctor = doctor1;
                                                 }
@@ -726,12 +725,10 @@ public class WestminsterSkinConsultationClinic_GUI {
                                                                         break;
                                                                 } else {
                                                                         //Checking for duplicate consultation date and time, then assigning the consultation
-                                                                        for (Doctor doctor1 : doctorArray) {
+                                                                        for (Doctor doctor1 : WestminsterSkinConsultationManager.doctorArray) {
 
                                                                                 if (doctor1.getMedicalLicenseNumber().equals(selectedDoctor)) {
-
                                                                                         doctor = doctor1;
-
                                                                                         for (Consultation consultation : WestminsterSkinConsultationManager.consulationsArray) {
                                                                                                 // Checking for duplicate consultation date and time
                                                                                                 if (consultation.getDoctor().getMedicalLicenseNumber().equals(selectedDoctor) && consultation.getConsultationDate().equals(selectedDateString) && consultation.getConsultationTime().equals(selectedTimeSlot)) {
@@ -906,7 +903,7 @@ public class WestminsterSkinConsultationClinic_GUI {
                                                         detailsModel.addRow(new Object[]{"Consultation Fee", consultation.getConsultationFee()});
                                                         detailsModel.addRow(new Object[]{"Consultation ID", consultation.getConsultationID()});
                                                         bookedConsultNotesArea.setText("Consult Notes :: "+consultation.getConsultationNotes());
-                                                        imageLabel.setIcon(new ImageIcon("patientImages\\"+consultation.getConsultationID()+".jpg"));
+                                                        imageLabel.setIcon(new ImageIcon("patientImages\\"+consultation.getConsultationID()+".png"));
                                                         imageLabel.setBounds(0,0,500,750);
                                                         imageFrame.remove(imageLabel);
                                                         imageFrame.add(imageLabel, BorderLayout.CENTER);
