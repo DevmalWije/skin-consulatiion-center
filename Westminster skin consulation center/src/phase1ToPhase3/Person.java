@@ -1,6 +1,11 @@
-package phase1ToPhase2;
+package phase1ToPhase3;
+
+import java.io.Serializable;
+import java.util.Date;
+
 //Creating person super class
-public class Person {
+public class Person implements Serializable {
+    public static final long serialVersionUID = 1L;
     //Defining person class arguments
     private String name;
     private String surName;

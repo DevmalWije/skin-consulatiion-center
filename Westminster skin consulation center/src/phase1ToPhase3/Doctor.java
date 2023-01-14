@@ -1,9 +1,10 @@
-package phase1ToPhase2;
+package phase1ToPhase3;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.io.Serializable;
 
-public class Doctor extends Person {
+public class Doctor extends Person implements Serializable {
+
+    public static final long serialVersionUID = 1L;
 
     //Defining doctor class arguments
     private String specialization;
@@ -33,5 +34,13 @@ public class Doctor extends Person {
 
     public void setMedicalLicenseNumber(String medicalLicenseNumber) {
         this.medicalLicenseNumber = medicalLicenseNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Doctor{" +
+                "specialization='" + specialization + '\'' +
+                ", medicalLicenseNumber='" + medicalLicenseNumber + '\'' +
+                '}';
     }
 }

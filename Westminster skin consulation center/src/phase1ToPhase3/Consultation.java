@@ -1,6 +1,10 @@
-package phase1ToPhase2;
+package phase1ToPhase3;
 
-public class Consultation {
+import java.io.Serializable;
+import java.util.Date;
+
+public class Consultation implements Serializable {
+    public static final long serialVersionUID = 1L;
     //Defining consultation class arguments
     private Doctor doctor;
     private Patient patient;
@@ -8,17 +12,20 @@ public class Consultation {
     private String timeSlot;
     private double consultationCost;
     private String consultationNotes;
+    private String consultationID;
 
     //Creating consultation class constructor
-    public Consultation(Doctor doctor, Patient patient, String date, String timeSlot, double consultationCost, String consultationNotes) {
+    public Consultation(Doctor doctor, Patient patient, String date, String timeSlot, double consultationCost, String consultationNotes, String consultationID) {
         this.doctor = doctor;
         this.patient = patient;
         this.date = date;
         this.timeSlot = timeSlot;
         this.consultationCost = consultationCost;
         this.consultationNotes = consultationNotes;
+        this.consultationID = consultationID;
     }
     //Creating getters and setters for consultation class arguments
+
     public Doctor getDoctor() {
         return doctor;
     }
@@ -35,7 +42,7 @@ public class Consultation {
         this.patient = patient;
     }
 
-    public String getDate() {
+    public String getConsultationDate() {
         return date;
     }
 
@@ -43,7 +50,7 @@ public class Consultation {
         this.date = date;
     }
 
-    public String getTimeSlot() {
+    public String getConsultationTime() {
         return timeSlot;
     }
 
@@ -51,7 +58,7 @@ public class Consultation {
         this.timeSlot = timeSlot;
     }
 
-    public double getConsultationCost() {
+    public double getConsultationFee() {
         return consultationCost;
     }
 
@@ -67,5 +74,23 @@ public class Consultation {
         this.consultationNotes = consultationNotes;
     }
 
+    public String getConsultationID() {
+        return consultationID;
+    }
 
+    public void setConsultationID(String consultationID) {
+        this.consultationID = consultationID;
+    }
+
+    @Override
+    public String toString() {
+        return "Consultation{" +
+                "doctor=" + doctor +
+                ", patient=" + patient +
+                ", date='" + date + '\'' +
+                ", timeSlot='" + timeSlot + '\'' +
+                ", consultationCost=" + consultationCost +
+                ", consultationNotes='" + consultationNotes + '\'' +
+                '}';
+    }
 }
